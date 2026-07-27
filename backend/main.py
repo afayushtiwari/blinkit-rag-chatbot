@@ -24,6 +24,7 @@ from dotenv import load_dotenv
 from vector_store import load_products, get_product_by_id
 import memory as memory_module
 import cart as cart_module
+import orders
 from cart_agent import handle_cart_command
 
 load_dotenv()
@@ -61,6 +62,16 @@ class ChatResponse(BaseModel):
     answer: str
     products: List[dict]
     cart: Optional[dict] = None
+
+
+class CheckoutRequest(BaseModel):
+    session_id: str
+    customer_name: str = Field(min_length=2, max_length=100)
+    phone: str = Field(min_length=10, max_length=20)
+    address: str = Field(min_length=5, max_length=300)
+    city: str = Field(min_length=2, max_length=100)
+    pincode: str = Field(min_length=4, max_length=12)
+    payment_method: str
 
 
 class CartItemRequest(BaseModel):
@@ -112,6 +123,29 @@ def update_cart_quantity(request: CartQuantityRequest):
 @app.post("/api/cart/remove")
 def remove_cart_item(request: CartItemRequest):
     return cart_module.remove_from_cart(request.session_id, request.product_id)
+
+
+@app.post("/api/orders/checkout")
+def checkout(request: CheckoutRequest):
+    allowed_payment_methods = {"Cash on Delivery", "UPI (Demo)", "Card (Demo)"}
+    if request.payment_method not in allowed_payment_methods:
+        raise HTTPException(status_code=400, detail="Choose a valid payment method.")
+
+    order, updated_cart = orders.create_order(
+        session_id=request.session_id,
+        customer_name=request.customer_name,
+        phone=request.phone,
+        address=request.address,
+        city=request.city,
+        pincode=request.pincode,
+        payment_method=request.payment_method,
+    )
+    return {"order": order, "cart": updated_cart}
+
+
+@app.get("/api/orders/{order_id}")
+def get_order(order_id: str):
+    return orders.get_order(order_id)
 
 
 @app.post("/api/chat", response_model=ChatResponse)

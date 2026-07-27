@@ -1,4 +1,4 @@
-export default function CartDrawer({ cart, open, onClose, onUpdateQuantity, onRemove }) {
+export default function CartDrawer({ cart, open, onClose, onUpdateQuantity, onRemove, onCheckout }) {
   if (!open) return null;
 
   return (
@@ -43,7 +43,10 @@ export default function CartDrawer({ cart, open, onClose, onUpdateQuantity, onRe
             <div className="mt-5 border-t dark:border-gray-700 pt-4 flex justify-between text-lg font-bold text-gray-900 dark:text-white">
               <span>Subtotal</span><span>₹{cart.subtotal}</span>
             </div>
-            <p className="mt-2 text-xs text-gray-500">Taxes and delivery charges will be calculated at checkout.</p>
+            <p className="mt-2 text-xs text-gray-500">Delivery is free above ₹199; otherwise ₹25 is added at checkout.</p>
+            <button onClick={onCheckout} className="mt-5 w-full rounded-xl bg-blinkit-green px-4 py-3 font-semibold text-white hover:bg-blinkit-green-dark">
+              Proceed to checkout
+            </button>
           </>
         )}
       </aside>

@@ -75,3 +75,11 @@ def remove_from_cart(session_id: str, product_id: str) -> dict:
             raise HTTPException(status_code=404, detail="Product is not in the cart")
         cart.pop(product_id)
         return _cart_summary(session_id)
+
+
+
+def clear_cart(session_id: str) -> dict:
+    """Remove all items from a session cart after a successful checkout."""
+    with _cart_lock:
+        _carts.pop(session_id, None)
+        return _cart_summary(session_id)
