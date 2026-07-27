@@ -73,12 +73,6 @@ class CheckoutRequest(BaseModel):
     pincode: str = Field(min_length=4, max_length=12)
     payment_method: str
 
-    def validate_payment_method(self):
-        allowed = {"Cash on Delivery", "UPI (Demo)", "Card (Demo)"}
-        if self.payment_method not in allowed:
-            raise ValueError("Unsupported payment method")
-        return self
-
 
 class CartItemRequest(BaseModel):
     session_id: str
