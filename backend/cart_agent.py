@@ -125,41 +125,41 @@ def handle_cart_command(session_id: str, message: str) -> Optional[dict]:
 
 
 
-    # Remove: "remove Amul Milk from my cart".
-    if re.search(r"\b(remove|delete)\b", text) and has_cart_reference:
-        current_cart = cart.get_cart(session_id)
-        allowed_ids = {item["product_id"] for item in current_cart["items"]}
-        product = _find_product(text, allowed_ids)
-        if not product:
-            return _response("I couldn't find that product in your cart.", current_cart)
-        updated_cart = cart.remove_from_cart(session_id, product["id"])
-        return _response(f"Removed {product['name']} from your cart.", updated_cart)
+    # # Remove: "remove Amul Milk from my cart".
+    # if re.search(r"\b(remove|delete)\b", text) and has_cart_reference:
+    #     current_cart = cart.get_cart(session_id)
+    #     allowed_ids = {item["product_id"] for item in current_cart["items"]}
+    #     product = _find_product(text, allowed_ids)
+    #     if not product:
+    #         return _response("I couldn't find that product in your cart.", current_cart)
+    #     updated_cart = cart.remove_from_cart(session_id, product["id"])
+    #     return _response(f"Removed {product['name']} from your cart.", updated_cart)
 
-    # Quantity: "change Amul Milk quantity to 3".
-    quantity_match = re.search(r"\b(change|set|update)\b.*?\b(?:quantity|qty)\b.*?\bto\s+(\d+)", text)
-    if quantity_match and has_cart_reference:
-        quantity = int(quantity_match.group(2))
-        current_cart = cart.get_cart(session_id)
-        allowed_ids = {item["product_id"] for item in current_cart["items"]}
-        product = _find_product(text, allowed_ids)
-        if not product:
-            return _response("I couldn't find that product in your cart.", current_cart)
-        updated_cart = cart.update_quantity(session_id, product["id"], quantity)
-        verb = "Removed" if quantity == 0 else "Updated"
-        return _response(f"{verb} {product['name']} in your cart.", updated_cart)
+    # # Quantity: "change Amul Milk quantity to 3".
+    # quantity_match = re.search(r"\b(change|set|update)\b.*?\b(?:quantity|qty)\b.*?\bto\s+(\d+)", text)
+    # if quantity_match and has_cart_reference:
+    #     quantity = int(quantity_match.group(2))
+    #     current_cart = cart.get_cart(session_id)
+    #     allowed_ids = {item["product_id"] for item in current_cart["items"]}
+    #     product = _find_product(text, allowed_ids)
+    #     if not product:
+    #         return _response("I couldn't find that product in your cart.", current_cart)
+    #     updated_cart = cart.update_quantity(session_id, product["id"], quantity)
+    #     verb = "Removed" if quantity == 0 else "Updated"
+    #     return _response(f"{verb} {product['name']} in your cart.", updated_cart)
 
-    # Add: "add 2 Amul Milk to my cart".
-    if has_cart_reference and re.search(r"\b(add|put|include)\b", text):
-        quantity_match = re.search(r"\b(add|put|include)\s+(\d+)\b", text)
-        quantity = int(quantity_match.group(2)) if quantity_match else 1
-        product = _find_product(text)
-        if not product:
-            return _response("I couldn't match that product. Please use its name, for example: Add Amul Milk to my cart.", cart.get_cart(session_id))
-        updated_cart = cart.add_to_cart(session_id, product["id"], quantity)
-        return _response(
-            f"Added {quantity} × {product['name']} to your cart.",
-            updated_cart,
-            [product],
-        )
+    # # Add: "add 2 Amul Milk to my cart".
+    # if has_cart_reference and re.search(r"\b(add|put|include)\b", text):
+    #     quantity_match = re.search(r"\b(add|put|include)\s+(\d+)\b", text)
+    #     quantity = int(quantity_match.group(2)) if quantity_match else 1
+    #     product = _find_product(text)
+    #     if not product:
+    #         return _response("I couldn't match that product. Please use its name, for example: Add Amul Milk to my cart.", cart.get_cart(session_id))
+    #     updated_cart = cart.add_to_cart(session_id, product["id"], quantity)
+    #     return _response(
+    #         f"Added {quantity} × {product['name']} to your cart.",
+    #         updated_cart,
+    #         [product],
+    #     )
 
-    return None
+    # return None
