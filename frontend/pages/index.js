@@ -6,6 +6,7 @@ import CategoryCard from "../components/CategoryCard";
 import ProductCard from "../components/ProductCard";
 import Chatbot from "../components/Chatbot";
 import CartDrawer from "../components/CartDrawer";
+import CheckoutModal from "../components/CheckoutModal";
 import { v4 as uuidv4 } from "uuid";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -20,6 +21,7 @@ export default function Home() {
   const [sessionId] = useState(() => uuidv4());
   const [cart, setCart] = useState({ items: [], item_count: 0, subtotal: 0 });
   const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   useEffect(() => {
     fetch(`${API_URL}/api/products`)
@@ -176,7 +178,19 @@ export default function Home() {
           onClose={() => setCartOpen(false)}
           onUpdateQuantity={handleUpdateQuantity}
           onRemove={handleRemoveFromCart}
+          onCheckout={() => {
+            setCartOpen(false);
+            setCheckoutOpen(true);
+          }}
         />
+        {checkoutOpen && (
+          <CheckoutModal
+            cart={cart}
+            sessionId={sessionId}
+            onClose={() => setCheckoutOpen(false)}
+            onOrderPlaced={setCart}
+          />
+        )}
       </div>
     </div>
   );
