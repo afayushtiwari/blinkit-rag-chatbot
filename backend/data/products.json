@@ -1,0 +1,364 @@
+[
+  {
+    "id": "P001",
+    "name": "Amul Taaza Toned Milk",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 32,
+    "rating": 4.5,
+    "description": "Fresh toned milk packed with calcium and protein, sourced daily from Amul dairy farms. Perfect for daily consumption, tea, coffee, and cooking.",
+    "reviews": [
+      "Very fresh and creamy, my kids love it every morning.",
+      "Consistent quality, best milk brand in India.",
+      "Good for making paneer and curd at home."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {"q": "What is the shelf life?", "a": "Best consumed within 2 days of opening if refrigerated."},
+      {"q": "Is it pasteurized?", "a": "Yes, it is fully pasteurized and safe for direct consumption."}
+    ],
+    "related_products": ["P002", "P010"]
+  },
+  {
+    "id": "P002",
+    "name": "Amul Fresh Curd",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 40,
+    "rating": 4.4,
+    "description": "Thick and creamy curd made from fresh milk, rich in probiotics and great for digestion.",
+    "reviews": [
+      "Perfect consistency, not too sour.",
+      "Great for making raita and lassi."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1584278858536-52532423b9ea?w=400",
+    "faqs": [
+      {"q": "Does it contain added sugar?", "a": "No, it is plain unsweetened curd."}
+    ],
+    "related_products": ["P001", "P003"]
+  },
+  {
+    "id": "P003",
+    "name": "Amul Butter",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 56,
+    "rating": 4.6,
+    "description": "Classic salted butter made from fresh cream, perfect for toast, cooking, and baking.",
+    "reviews": [
+      "Iconic taste, been using it for years.",
+      "Melts perfectly on hot parathas."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400",
+    "faqs": [
+      {"q": "Does it need refrigeration?", "a": "Yes, refrigerate after opening for best shelf life."}
+    ],
+    "related_products": ["P001", "P002"]
+  },
+  {
+    "id": "P004",
+    "name": "Britannia Whole Wheat Bread",
+    "category": "Bakery",
+    "brand": "Britannia",
+    "price": 45,
+    "rating": 4.2,
+    "description": "Soft whole wheat bread made with 100% whole wheat flour, no maida, ideal for a healthy breakfast.",
+    "reviews": [
+      "Soft texture and stays fresh for 3-4 days.",
+      "Good for weight watchers, high fiber content."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {"q": "Is it suitable for diabetics?", "a": "It has lower glycemic impact than white bread but consult a doctor for dietary advice."}
+    ],
+    "related_products": ["P005", "P003"]
+  },
+  {
+    "id": "P005",
+    "name": "Britannia Marie Gold Biscuits",
+    "category": "Snacks",
+    "brand": "Britannia",
+    "price": 30,
+    "rating": 4.3,
+    "description": "Light and crispy tea-time biscuits made with wheat and enriched with vitamins.",
+    "reviews": [
+      "Perfect with evening chai.",
+      "Kids love it as a light snack."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400",
+    "faqs": [
+      {"q": "Does it contain trans fat?", "a": "No, it is a trans-fat free product."}
+    ],
+    "related_products": ["P004", "P006"]
+  },
+  {
+    "id": "P006",
+    "name": "Lay's Classic Salted Chips",
+    "category": "Snacks",
+    "brand": "Lay's",
+    "price": 20,
+    "rating": 4.4,
+    "description": "Crispy potato chips made from fresh potatoes with a classic salted flavor.",
+    "reviews": [
+      "Perfectly crispy and not too oily.",
+      "Great for parties and movie nights."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400",
+    "faqs": [
+      {"q": "Is it vegetarian?", "a": "Yes, 100% vegetarian, contains no animal products."}
+    ],
+    "related_products": ["P007", "P005"]
+  },
+  {
+    "id": "P007",
+    "name": "Lay's Magic Masala Chips",
+    "category": "Snacks",
+    "brand": "Lay's",
+    "price": 20,
+    "rating": 4.5,
+    "description": "Spicy and tangy potato chips coated with the popular magic masala seasoning.",
+    "reviews": [
+      "Best flavored chips in the market.",
+      "Perfect balance of spice and tang."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1613919113640-25732ec5e61f?w=400",
+    "faqs": [
+      {"q": "How spicy is it?", "a": "Mild to medium spice level, suitable for most people."}
+    ],
+    "related_products": ["P006", "P008"]
+  },
+  {
+    "id": "P008",
+    "name": "Coca-Cola 750ml",
+    "category": "Beverages",
+    "brand": "Coca-Cola",
+    "price": 40,
+    "rating": 4.3,
+    "description": "Refreshing carbonated soft drink with the classic Coca-Cola taste, best served chilled.",
+    "reviews": [
+      "Great taste, perfect for parties.",
+      "Always refreshing on a hot day."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400",
+    "faqs": [
+      {"q": "Is it caffeinated?", "a": "Yes, it contains caffeine."}
+    ],
+    "related_products": ["P009", "P006"]
+  },
+  {
+    "id": "P009",
+    "name": "Real Fruit Power Mixed Fruit Juice",
+    "category": "Beverages",
+    "brand": "Real",
+    "price": 110,
+    "rating": 4.2,
+    "description": "No added preservatives juice made from a blend of real mixed fruits, rich in Vitamin C.",
+    "reviews": [
+      "Tastes very natural, not too sweet.",
+      "Good source of daily vitamins for kids."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
+    "faqs": [
+      {"q": "Does it contain added sugar?", "a": "It contains natural fruit sugars with minimal added sugar."}
+    ],
+    "related_products": ["P008", "P011"]
+  },
+  {
+    "id": "P010",
+    "name": "Maggi 2-Minute Noodles",
+    "category": "Instant Food",
+    "brand": "Nestle",
+    "price": 14,
+    "rating": 4.6,
+    "description": "India's favorite instant noodles, ready in just 2 minutes with a masala tastemaker.",
+    "reviews": [
+      "Nostalgic taste, perfect for quick hunger fix.",
+      "Best instant noodles, kids and adults both love it."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {"q": "Is it healthy?", "a": "It is a convenience food; best enjoyed occasionally as part of a balanced diet."}
+    ],
+    "related_products": ["P004", "P001"]
+  },
+  {
+    "id": "P011",
+    "name": "Fresh Bananas (6 pcs)",
+    "category": "Fruits",
+    "brand": "Farm Fresh",
+    "price": 45,
+    "rating": 4.5,
+    "description": "Naturally ripened fresh bananas, rich in potassium and fiber, ideal for a healthy snack.",
+    "reviews": [
+      "Very fresh and sweet.",
+      "Good quality, delivered ripe and ready to eat."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {"q": "How should I store them?", "a": "Store at room temperature away from direct sunlight."}
+    ],
+    "related_products": ["P012", "P009"]
+  },
+  {
+    "id": "P012",
+    "name": "Fresh Apples (Shimla) 1kg",
+    "category": "Fruits",
+    "brand": "Farm Fresh",
+    "price": 150,
+    "rating": 4.4,
+    "description": "Crisp and juicy Shimla apples, handpicked and rich in fiber and antioxidants.",
+    "reviews": [
+      "Very crunchy and fresh.",
+      "Good size and sweetness, kids enjoy them."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400",
+    "faqs": [
+      {"q": "Are these organic?", "a": "These are farm fresh but not certified organic."}
+    ],
+    "related_products": ["P011", "P009"]
+  },
+  {
+    "id": "P013",
+    "name": "Cadbury Dairy Milk Chocolate",
+    "category": "Chocolates",
+    "brand": "Cadbury",
+    "price": 50,
+    "rating": 4.7,
+    "description": "Smooth and creamy milk chocolate bar, a classic treat for all occasions.",
+    "reviews": [
+      "Melts perfectly in mouth, best chocolate.",
+      "Great for gifting and self-indulgence."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400",
+    "faqs": [
+      {"q": "Does it contain nuts?", "a": "No, the classic variant is nut-free, but check for cross-contamination warnings."}
+    ],
+    "related_products": ["P014", "P005"]
+  },
+  {
+    "id": "P014",
+    "name": "Kinder Joy Chocolate Egg",
+    "category": "Chocolates",
+    "brand": "Ferrero",
+    "price": 45,
+    "rating": 4.5,
+    "description": "Chocolate egg with a creamy filling and a fun surprise toy inside, loved by kids.",
+    "reviews": [
+      "Kids absolutely love the surprise toy.",
+      "Good quality chocolate and creamy filling."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400",
+    "faqs": [
+      {"q": "What age is it suitable for?", "a": "Suitable for children above 3 years; small toy parts require supervision."}
+    ],
+    "related_products": ["P013", "P006"]
+  },
+  {
+    "id": "P015",
+    "name": "Tata Salt 1kg",
+    "category": "Grocery",
+    "brand": "Tata",
+    "price": 25,
+    "rating": 4.6,
+    "description": "Iodized vacuum-evaporated salt, India's most trusted salt brand for everyday cooking.",
+    "reviews": [
+      "Pure and free flowing, trusted brand.",
+      "Good quality, no lumps."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1518110925495-7b6f92ea0dbf?w=400",
+    "faqs": [
+      {"q": "Is it iodized?", "a": "Yes, it is fortified with iodine."}
+    ],
+    "related_products": ["P016", "P017"]
+  },
+  {
+    "id": "P016",
+    "name": "Fortune Sunflower Oil 1L",
+    "category": "Grocery",
+    "brand": "Fortune",
+    "price": 145,
+    "rating": 4.3,
+    "description": "Refined sunflower oil that is light and healthy, ideal for everyday cooking and frying.",
+    "reviews": [
+      "Light on stomach, good for daily cooking.",
+      "No strong smell, great for frying."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400",
+    "faqs": [
+      {"q": "Is it cholesterol free?", "a": "Yes, it contains zero cholesterol."}
+    ],
+    "related_products": ["P015", "P017"]
+  },
+  {
+    "id": "P017",
+    "name": "India Gate Basmati Rice 1kg",
+    "category": "Grocery",
+    "brand": "India Gate",
+    "price": 120,
+    "rating": 4.5,
+    "description": "Premium long-grain basmati rice, aged for a rich aroma and fluffy texture when cooked.",
+    "reviews": [
+      "Long grains and great aroma.",
+      "Perfect for biryani and pulao."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "faqs": [
+      {"q": "Is it aged rice?", "a": "Yes, it is aged for enhanced aroma and texture."}
+    ],
+    "related_products": ["P015", "P016"]
+  },
+  {
+    "id": "P018",
+    "name": "Nescafe Classic Instant Coffee 50g",
+    "category": "Beverages",
+    "brand": "Nescafe",
+    "price": 180,
+    "rating": 4.4,
+    "description": "Rich and aromatic instant coffee granules made from the finest coffee beans.",
+    "reviews": [
+      "Strong aroma and rich taste.",
+      "Perfect for a quick morning coffee."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1610632380989-680fe40816c6?w=400",
+    "faqs": [
+      {"q": "Is it decaf?", "a": "No, this is regular caffeinated instant coffee."}
+    ],
+    "related_products": ["P008", "P009"]
+  },
+  {
+    "id": "P019",
+    "name": "Haldiram's Aloo Bhujia",
+    "category": "Snacks",
+    "brand": "Haldiram's",
+    "price": 55,
+    "rating": 4.5,
+    "description": "Crispy and spicy potato and gram flour namkeen, a popular Indian tea-time snack.",
+    "reviews": [
+      "Very crispy and flavorful.",
+      "Great with evening tea."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400",
+    "faqs": [
+      {"q": "How long does it stay fresh after opening?", "a": "Best consumed within a week of opening if sealed properly."}
+    ],
+    "related_products": ["P006", "P007"]
+  },
+  {
+    "id": "P020",
+    "name": "Mother Dairy Paneer 200g",
+    "category": "Dairy",
+    "brand": "Mother Dairy",
+    "price": 90,
+    "rating": 4.5,
+    "description": "Fresh and soft cottage cheese made from pure milk, perfect for curries and snacks.",
+    "reviews": [
+      "Very soft and fresh texture.",
+      "Great for making paneer tikka and curries."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400",
+    "faqs": [
+      {"q": "How long can it be refrigerated?", "a": "Best consumed within 3-4 days when refrigerated."}
+    ],
+    "related_products": ["P001", "P002"]
+  }
+]
