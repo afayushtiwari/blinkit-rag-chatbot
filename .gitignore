@@ -4,6 +4,7 @@ __pycache__/
 venv/
 .env
 backend/chroma_db/
+backend/orders.db
 
 # Node / Next.js
 node_modules/
