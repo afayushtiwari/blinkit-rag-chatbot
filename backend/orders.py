@@ -35,6 +35,7 @@ def _initialise_database() -> None:
                 session_id TEXT NOT NULL,
                 customer_name TEXT NOT NULL,
                 phone TEXT NOT NULL,
+                email TEXT,
                 address TEXT NOT NULL,
                 city TEXT NOT NULL,
                 pincode TEXT NOT NULL,
@@ -60,6 +61,7 @@ def create_order(
     session_id: str,
     customer_name: str,
     phone: str,
+    email: str | None,
     address: str,
     city: str,
     pincode: str,
@@ -83,16 +85,17 @@ def create_order(
             connection.execute(
                 """
                 INSERT INTO orders (
-                    order_id, session_id, customer_name, phone, address, city,
+                    order_id, session_id, customer_name, phone, email, address, city,
                     pincode, payment_method, status, subtotal, delivery_fee,
                     total, items_json, created_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     order_id,
                     session_id,
                     customer_name.strip(),
                     phone.strip(),
+                    email.strip() if email else None,
                     address.strip(),
                     city.strip(),
                     pincode.strip(),
@@ -112,6 +115,7 @@ def create_order(
             "session_id": session_id,
             "customer_name": customer_name.strip(),
             "phone": phone.strip(),
+            "email": email.strip() if email else None,
             "address": address.strip(),
             "city": city.strip(),
             "pincode": pincode.strip(),
