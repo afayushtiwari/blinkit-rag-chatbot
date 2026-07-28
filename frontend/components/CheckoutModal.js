@@ -8,6 +8,7 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
   const [form, setForm] = useState({
     customer_name: "",
     phone: "",
+    email: "",
     address: "",
     city: "",
     pincode: "",
@@ -16,6 +17,7 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [order, setOrder] = useState(null);
+  const [emailStatus, setEmailStatus] = useState(null);
 
   const deliveryFee = useMemo(
     () => (cart.subtotal >= 199 ? 0 : 25),
@@ -42,6 +44,7 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
       if (!response.ok) throw new Error(data.detail || "Checkout could not be completed.");
 
       setOrder(data.order);
+      setEmailStatus(data.email || null);
       onOrderPlaced?.(data.cart);
     } catch (requestError) {
       setError(requestError.message);
@@ -66,7 +69,15 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
             <div className="mt-2 flex justify-between text-sm"><span>Payment</span><span>{order.payment_method}</span></div>
             <div className="mt-2 flex justify-between font-bold"><span>Total</span><span>₹{order.total}</span></div>
           </div>
-          <p className="mt-4 text-xs text-gray-500">Payment and email are demo-only; no real charge was made.</p>
+          <a
+            href={`${API_URL}/api/orders/${order.order_id}/invoice`}
+            className="mt-5 block w-full rounded-xl border border-blinkit-green px-4 py-3 font-semibold text-blinkit-green hover:bg-green-50"
+          >
+            Download invoice PDF
+          </a>
+          <p className="mt-4 text-xs text-gray-500">
+            {emailStatus?.message || "No email was requested."} No real payment was made.
+          </p>
           <button onClick={onClose} className="mt-5 w-full rounded-xl bg-blinkit-green px-4 py-3 font-semibold text-white hover:bg-blinkit-green-dark">
             Continue shopping
           </button>
@@ -95,6 +106,9 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
               <input required name="phone" inputMode="tel" value={form.phone} onChange={updateField} className="mt-1 w-full rounded-lg border p-2.5 text-gray-900" />
             </label>
           </div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Email for invoice (optional)
+            <input type="email" name="email" value={form.email} onChange={updateField} className="mt-1 w-full rounded-lg border p-2.5 text-gray-900" placeholder="you@example.com" />
+          </label>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Delivery address
             <textarea required name="address" value={form.address} onChange={updateField} rows="3" className="mt-1 w-full rounded-lg border p-2.5 text-gray-900" placeholder="House/flat number, street, landmark" />
           </label>
