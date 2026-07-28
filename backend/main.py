@@ -17,6 +17,7 @@ import traceback
 from typing import List, Optional
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
@@ -25,6 +26,8 @@ from vector_store import load_products, get_product_by_id
 import memory as memory_module
 import cart as cart_module
 import orders
+from email_service import send_invoice_email
+from invoice import build_invoice_pdf, invoice_filename
 from cart_agent import handle_cart_command
 
 load_dotenv()
@@ -68,6 +71,7 @@ class CheckoutRequest(BaseModel):
     session_id: str
     customer_name: str = Field(min_length=2, max_length=100)
     phone: str = Field(min_length=10, max_length=20)
+    email: Optional[str] = Field(default=None, max_length=254)
     address: str = Field(min_length=5, max_length=300)
     city: str = Field(min_length=2, max_length=100)
     pincode: str = Field(min_length=4, max_length=12)
@@ -130,17 +134,34 @@ def checkout(request: CheckoutRequest):
     allowed_payment_methods = {"Cash on Delivery", "UPI (Demo)", "Card (Demo)"}
     if request.payment_method not in allowed_payment_methods:
         raise HTTPException(status_code=400, detail="Choose a valid payment method.")
+    if request.email and "@" not in request.email:
+        raise HTTPException(status_code=400, detail="Enter a valid email address.")
 
     order, updated_cart = orders.create_order(
         session_id=request.session_id,
         customer_name=request.customer_name,
         phone=request.phone,
+        email=request.email,
         address=request.address,
         city=request.city,
         pincode=request.pincode,
         payment_method=request.payment_method,
     )
-    return {"order": order, "cart": updated_cart}
+    invoice_pdf = build_invoice_pdf(order)
+    email_result = send_invoice_email(order, invoice_pdf)
+    return {"order": order, "cart": updated_cart, "email": email_result}
+
+
+@app.get("/api/orders/{order_id}/invoice")
+def download_invoice(order_id: str):
+    order = orders.get_order(order_id)
+    return Response(
+        content=build_invoice_pdf(order),
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'attachment; filename="{invoice_filename(order_id)}"'
+        },
+    )
 
 
 @app.get("/api/orders/{order_id}")
