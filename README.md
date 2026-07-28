@@ -199,3 +199,29 @@ Use this structure when presenting:
 | Chatbot says it couldn't reach the assistant | Check backend terminal for errors; confirm `GOOGLE_API_KEY` is set |
 | `GoogleGenerativeAIEmbeddings` errors on startup | Re-check your API key and that billing/usage limits aren't exceeded |
 | Vector DB seems stale after editing products.json | Delete `backend/chroma_db/` and re-run `python vector_store.py` |
+
+
+---
+
+## 11. Invoice PDF and Optional Email
+
+After a checkout, QuickCart creates a downloadable invoice PDF. The order confirmation screen includes a **Download invoice PDF** button. You can also use:
+
+```
+GET /api/orders/{order_id}/invoice
+```
+
+Email is optional and disabled by default. Copy `backend/.env.example` to `backend/.env`, then set:
+
+```
+env
+EMAIL_ENABLED=true
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=your-email@example.com
+SMTP_PASSWORD=your-provider-app-password
+SMTP_FROM=QuickCart <your-email@example.com>
+SMTP_USE_TLS=true
+```
+
+For Gmail, use an **App Password**, not your normal Google password. The customer must enter an email during checkout; when SMTP is correctly configured, the invoice PDF is attached to the confirmation email. If any SMTP setting is missing, checkout still succeeds and simply reports that email is not configured.
