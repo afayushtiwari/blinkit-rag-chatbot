@@ -49,6 +49,9 @@ def _initialise_database() -> None:
             )
             """
         )
+        columns = {row[1] for row in connection.execute("PRAGMA table_info(orders)")}
+        if "email" not in columns:
+            connection.execute("ALTER TABLE orders ADD COLUMN email TEXT")
 
 
 def _public_order(row: sqlite3.Row) -> dict:
