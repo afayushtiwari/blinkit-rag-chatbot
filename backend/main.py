@@ -148,6 +148,11 @@ def get_order(order_id: str):
     return orders.get_order(order_id)
 
 
+@app.get("/api/chat/history/{session_id}")
+def chat_history(session_id: str):
+    return {"session_id": session_id, "messages": memory_module.get_session_messages(session_id)}
+
+
 @app.post("/api/chat", response_model=ChatResponse)
 def chat(request: ChatRequest):
     if not request.message or not request.message.strip():
@@ -155,6 +160,7 @@ def chat(request: ChatRequest):
 
     cart_result = handle_cart_command(request.session_id, request.message)
     if cart_result is not None:
+        memory_module.save_turn(request.session_id, request.message, cart_result["answer"])
         return cart_result
 
     try:

@@ -1,23 +1,37 @@
-import { useState, useRef, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useEffect, useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const welcomeMessage = {
+  role: "bot",
+  text: "Hi! 👋 I'm BlinkBot, your AI shopping assistant. Ask me about any product - try \"Show me details of Amul Milk\" or \"What snacks do you have?\"",
+  products: [],
+};
 
 export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
   const [open, setOpen] = useState(false);
-  const [generatedSessionId] = useState(() => uuidv4());
-  const activeSessionId = sessionId || generatedSessionId;
-  const [messages, setMessages] = useState([
-    {
-      role: "bot",
-      text: "Hi! 👋 I'm BlinkBot, your AI shopping assistant. Ask me about any product — try \"Show me details of Amul Milk\" or \"What snacks do you have?\"",
-      products: [],
-    },
-  ]);
+  const [messages, setMessages] = useState([welcomeMessage]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
   const scrollRef = useRef(null);
+
+  useEffect(() => {
+    if (!sessionId) return;
+
+    fetch(`${API_URL}/api/chat/history/${sessionId}`)
+      .then((response) => {
+        if (!response.ok) throw new Error("Could not restore chat history");
+        return response.json();
+      })
+      .then((data) => {
+        if (data.messages?.length) {
+          setMessages(data.messages);
+        }
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setHistoryLoaded(true));
+  }, [sessionId]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -27,40 +41,37 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
 
   const sendMessage = async () => {
     const trimmed = input.trim();
-    if (!trimmed || loading) return;
+    if (!trimmed || loading || !sessionId || !historyLoaded) return;
 
     const userMsg = { role: "user", text: trimmed, products: [] };
-    setMessages((prev) => [...prev, userMsg]);
+    setMessages((previous) => [...previous, userMsg]);
     setInput("");
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/chat`, {
+      const response = await fetch(`${API_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: activeSessionId, message: trimmed }),
+        body: JSON.stringify({ session_id: sessionId, message: trimmed }),
       });
 
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.detail || `Server responded with ${res.status}`);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.detail || `Server responded with ${response.status}`);
       }
 
-      const data = await res.json();
+      const data = await response.json();
       if (data.cart) onCartChanged?.(data.cart);
-      setMessages((prev) => [
-        ...prev,
+      setMessages((previous) => [
+        ...previous,
         { role: "bot", text: data.answer, products: data.products || [] },
       ]);
-    } catch (err) {
-      setMessages((prev) => [
-        ...prev,
+    } catch (error) {
+      setMessages((previous) => [
+        ...previous,
         {
           role: "bot",
-          text:
-            "⚠️ Sorry, I couldn't reach the assistant right now (" +
-            (err.message || "network error") +
-            "). Please make sure the backend server is running and try again.",
+          text: `⚠️ Sorry, I couldn't reach the assistant right now (${error.message || "network error"}). Please make sure the backend server is running and try again.`,
           products: [],
         },
       ]);
@@ -69,16 +80,15 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
       sendMessage();
     }
   };
 
   return (
     <>
-      {/* Floating button */}
       <button
         onClick={() => setOpen(!open)}
         className="fixed bottom-6 right-6 z-50 bg-blinkit-green hover:bg-blinkit-green-dark text-white rounded-full w-16 h-16 shadow-lg flex items-center justify-center text-2xl transition-transform hover:scale-105"
@@ -87,10 +97,8 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
         {open ? "✕" : "💬"}
       </button>
 
-      {/* Chat window */}
       {open && (
         <div className="fixed bottom-24 right-6 z-50 w-[92vw] max-w-sm h-[70vh] max-h-[600px] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-100 dark:border-gray-800">
-          {/* Header */}
           <div className="bg-blinkit-green text-white px-4 py-3 flex items-center gap-2">
             <span className="text-xl">🤖</span>
             <div>
@@ -99,38 +107,18 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
             </div>
           </div>
 
-          {/* Messages */}
-          <div
-            ref={scrollRef}
-            className="flex-1 overflow-y-auto chat-scroll px-3 py-4 space-y-4 bg-gray-50 dark:bg-gray-950"
-          >
-            {messages.map((msg, idx) => (
-              <div
-                key={idx}
-                className={`fade-in-up flex flex-col ${
-                  msg.role === "user" ? "items-end" : "items-start"
-                }`}
-              >
-                <div
-                  className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm whitespace-pre-wrap ${
-                    msg.role === "user"
-                      ? "bg-blinkit-green text-white rounded-br-sm"
-                      : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-bl-sm shadow-soft"
-                  }`}
-                >
-                  {msg.text}
+          <div ref={scrollRef} className="flex-1 overflow-y-auto chat-scroll px-3 py-4 space-y-4 bg-gray-50 dark:bg-gray-950">
+            {!historyLoaded && sessionId && <p className="text-center text-xs text-gray-500">Restoring your chat...</p>}
+            {messages.map((message, index) => (
+              <div key={index} className={`fade-in-up flex flex-col ${message.role === "user" ? "items-end" : "items-start"}`}>
+                <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm whitespace-pre-wrap ${message.role === "user" ? "bg-blinkit-green text-white rounded-br-sm" : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-bl-sm shadow-soft"}`}>
+                  {message.text}
                 </div>
 
-                {/* Product cards inside chat */}
-                {msg.products && msg.products.length > 0 && (
+                {message.products?.length > 0 && (
                   <div className="mt-2 flex gap-3 overflow-x-auto max-w-full pb-1">
-                    {msg.products.map((p) => (
-                      <ProductCard
-                        key={p.id}
-                        product={p}
-                        onAddToCart={onAddToCart}
-                        compact
-                      />
+                    {message.products.map((product) => (
+                      <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} compact />
                     ))}
                   </div>
                 )}
@@ -148,19 +136,19 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
             )}
           </div>
 
-          {/* Input */}
           <div className="border-t border-gray-100 dark:border-gray-800 p-3 flex items-center gap-2">
             <input
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(event) => setInput(event.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask about a product..."
-              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blinkit-green"
+              disabled={!sessionId || !historyLoaded}
+              placeholder={historyLoaded ? "Ask about a product..." : "Restoring your chat..."}
+              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blinkit-green disabled:opacity-60"
             />
             <button
               onClick={sendMessage}
-              disabled={loading}
+              disabled={loading || !sessionId || !historyLoaded}
               className="bg-blinkit-green text-white rounded-xl px-4 py-2 text-sm font-semibold disabled:opacity-50"
             >
               Send

@@ -199,3 +199,12 @@ Use this structure when presenting:
 | Chatbot says it couldn't reach the assistant | Check backend terminal for errors; confirm `GOOGLE_API_KEY` is set |
 | `GoogleGenerativeAIEmbeddings` errors on startup | Re-check your API key and that billing/usage limits aren't exceeded |
 | Vector DB seems stale after editing products.json | Delete `backend/chroma_db/` and re-run `python vector_store.py` |
+
+
+---
+
+## Persistent visitor sessions
+
+QuickCart now creates one anonymous browser session ID and saves it in browser local storage. The backend stores the corresponding cart, chat messages, and remembered name in `backend/session_data.db`. This means refreshing the page or restarting the backend preserves the visitor's cart and chat history on the same browser.
+
+To deliberately start fresh, clear this site's browser storage. The database file is local runtime data and is intentionally excluded from Git.
