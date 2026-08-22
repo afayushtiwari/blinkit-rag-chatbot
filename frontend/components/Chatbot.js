@@ -41,7 +41,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
 
   const sendMessage = async () => {
     const trimmed = input.trim();
-    if (!trimmed || loading || !sessionId) return;
+    if (!trimmed || loading || !sessionId || !historyLoaded) return;
 
     const userMsg = { role: "user", text: trimmed, products: [] };
     setMessages((previous) => [...previous, userMsg]);
@@ -142,13 +142,13 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
               value={input}
               onChange={(event) => setInput(event.target.value)}
               onKeyDown={handleKeyDown}
-              disabled={!sessionId}
-              placeholder={sessionId ? "Ask about a product..." : "Preparing your chat..."}
+              disabled={!sessionId || !historyLoaded}
+              placeholder={historyLoaded ? "Ask about a product..." : "Restoring your chat..."}
               className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blinkit-green disabled:opacity-60"
             />
             <button
               onClick={sendMessage}
-              disabled={loading || !sessionId}
+              disabled={loading || !sessionId || !historyLoaded}
               className="bg-blinkit-green text-white rounded-xl px-4 py-2 text-sm font-semibold disabled:opacity-50"
             >
               Send
