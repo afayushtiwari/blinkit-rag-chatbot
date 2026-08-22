@@ -66,7 +66,13 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
             <div className="mt-2 flex justify-between text-sm"><span>Payment</span><span>{order.payment_method}</span></div>
             <div className="mt-2 flex justify-between font-bold"><span>Total</span><span>₹{order.total}</span></div>
           </div>
-          <p className="mt-4 text-xs text-gray-500">Payment and email are demo-only; no real charge was made.</p>
+          <a
+            href={`${API_URL}/api/orders/${order.order_id}/invoice`}
+            className="mt-5 block w-full rounded-xl border border-blinkit-green px-4 py-3 font-semibold text-blinkit-green hover:bg-green-50"
+          >
+            Download PDF Invoice
+          </a>
+          <p className="mt-4 text-xs text-gray-500">Payment is demo-only; no real charge was made.</p>
           <button onClick={onClose} className="mt-5 w-full rounded-xl bg-blinkit-green px-4 py-3 font-semibold text-white hover:bg-blinkit-green-dark">
             Continue shopping
           </button>
