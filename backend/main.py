@@ -160,6 +160,7 @@ def chat(request: ChatRequest):
 
     cart_result = handle_cart_command(request.session_id, request.message)
     if cart_result is not None:
+        memory_module.save_turn(request.session_id, request.message, cart_result["answer"])
         return cart_result
 
     try:
