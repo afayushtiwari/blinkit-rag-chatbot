@@ -1,19 +1,19 @@
-"""Small in-memory cart service used by the BlinkBot demo."""
-
-from threading import Lock
-from typing import Dict
+"""Persistent cart service for the BlinkBot demo."""
 
 from fastapi import HTTPException
 
+from session_store import (
+    add_cart_quantity,
+    clear_cart as clear_persisted_cart,
+    get_cart_quantities,
+    remove_cart_item,
+    set_cart_quantity,
+)
 from vector_store import get_product_by_id
 
 
-_carts: Dict[str, Dict[str, int]] = {}
-_cart_lock = Lock()
-
-
 def _cart_summary(session_id: str) -> dict:
-    quantities = _carts.get(session_id, {})
+    quantities = get_cart_quantities(session_id)
     items = []
     subtotal = 0.0
 
@@ -24,14 +24,16 @@ def _cart_summary(session_id: str) -> dict:
         price = float(product["price"])
         line_total = round(price * quantity, 2)
         subtotal += line_total
-        items.append({
-            "product_id": product_id,
-            "name": product["name"],
-            "price": price,
-            "quantity": quantity,
-            "line_total": line_total,
-            "image_url": product.get("image_url", ""),
-        })
+        items.append(
+            {
+                "product_id": product_id,
+                "name": product["name"],
+                "price": price,
+                "quantity": quantity,
+                "line_total": line_total,
+                "image_url": product.get("image_url", ""),
+            }
+        )
 
     return {
         "session_id": session_id,
@@ -42,44 +44,33 @@ def _cart_summary(session_id: str) -> dict:
 
 
 def get_cart(session_id: str) -> dict:
-    with _cart_lock:
-        return _cart_summary(session_id)
+    return _cart_summary(session_id)
 
 
 def add_to_cart(session_id: str, product_id: str, quantity: int = 1) -> dict:
     if not get_product_by_id(product_id):
         raise HTTPException(status_code=404, detail="Product not found")
 
-    with _cart_lock:
-        cart = _carts.setdefault(session_id, {})
-        cart[product_id] = cart.get(product_id, 0) + quantity
-        return _cart_summary(session_id)
+    add_cart_quantity(session_id, product_id, quantity)
+    return _cart_summary(session_id)
 
 
 def update_quantity(session_id: str, product_id: str, quantity: int) -> dict:
-    with _cart_lock:
-        cart = _carts.setdefault(session_id, {})
-        if product_id not in cart:
-            raise HTTPException(status_code=404, detail="Product is not in the cart")
-        if quantity <= 0:
-            cart.pop(product_id, None)
-        else:
-            cart[product_id] = quantity
-        return _cart_summary(session_id)
+    current_cart = get_cart_quantities(session_id)
+    if product_id not in current_cart:
+        raise HTTPException(status_code=404, detail="Product is not in the cart")
+
+    set_cart_quantity(session_id, product_id, quantity)
+    return _cart_summary(session_id)
 
 
 def remove_from_cart(session_id: str, product_id: str) -> dict:
-    with _cart_lock:
-        cart = _carts.setdefault(session_id, {})
-        if product_id not in cart:
-            raise HTTPException(status_code=404, detail="Product is not in the cart")
-        cart.pop(product_id)
-        return _cart_summary(session_id)
-
+    if not remove_cart_item(session_id, product_id):
+        raise HTTPException(status_code=404, detail="Product is not in the cart")
+    return _cart_summary(session_id)
 
 
 def clear_cart(session_id: str) -> dict:
-    """Remove all items from a session cart after a successful checkout."""
-    with _cart_lock:
-        _carts.pop(session_id, None)
-        return _cart_summary(session_id)
+    """Remove all items after successful checkout."""
+    clear_persisted_cart(session_id)
+    return _cart_summary(session_id)
