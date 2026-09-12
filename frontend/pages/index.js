@@ -9,6 +9,18 @@ import CartDrawer from "../components/CartDrawer";
 import CheckoutModal from "../components/CheckoutModal";
 import { v4 as uuidv4 } from "uuid";
 
+const SESSION_KEY = "quickcart_session_id";
+
+function getSessionId() {
+  if (typeof window === "undefined") return uuidv4();
+  let id = localStorage.getItem(SESSION_KEY);
+  if (!id) {
+    id = uuidv4();
+    localStorage.setItem(SESSION_KEY, id);
+  }
+  return id;
+}
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export default function Home() {
@@ -18,7 +30,7 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState(null);
-  const [sessionId] = useState(() => uuidv4());
+  const [sessionId] = useState(() => getSessionId());
   const [cart, setCart] = useState({ items: [], item_count: 0, subtotal: 0 });
   const [cartOpen, setCartOpen] = useState(false);
   const [checkoutOpen, setCheckoutOpen] = useState(false);

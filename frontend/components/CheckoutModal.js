@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -16,6 +16,10 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [order, setOrder] = useState(null);
+  const [dates, setDates] = useState([]);
+  const [slots, setSlots] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedSlot, setSelectedSlot] = useState("");
 
   const deliveryFee = useMemo(
     () => (cart.subtotal >= 199 ? 0 : 25),
@@ -23,12 +27,37 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
   );
   const total = Number(cart.subtotal) + deliveryFee;
 
+  useEffect(() => {
+    fetch(`${API_URL}/api/delivery-slots`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.dates && data.dates.length) {
+          setDates(data.dates);
+          setSelectedDate(data.dates[0].date);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (!selectedDate) return;
+    setSelectedSlot("");
+    fetch(`${API_URL}/api/delivery-slots?date=${selectedDate}`)
+      .then((res) => res.json())
+      .then((data) => setSlots(data.slots || []))
+      .catch(() => {});
+  }, [selectedDate]);
+
   const updateField = (event) => {
     setForm((current) => ({ ...current, [event.target.name]: event.target.value }));
   };
 
   const submit = async (event) => {
     event.preventDefault();
+    if (!selectedDate || !selectedSlot) {
+      setError("Please pick a delivery slot to continue.");
+      return;
+    }
     setSubmitting(true);
     setError("");
 
@@ -36,10 +65,20 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
       const response = await fetch(`${API_URL}/api/orders/checkout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: sessionId, ...form }),
+        body: JSON.stringify({
+          session_id: sessionId,
+          ...form,
+          delivery_date: selectedDate,
+          delivery_slot: selectedSlot,
+        }),
       });
       const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(data.detail || "Checkout could not be completed.");
+      if (!response.ok) {
+        const message = Array.isArray(data.detail)
+          ? data.detail.map((item) => item.msg || "Invalid input").join("; ")
+          : data.detail || "Checkout could not be completed.";
+        throw new Error(message);
+      }
 
       setOrder(data.order);
       onOrderPlaced?.(data.cart);
@@ -56,9 +95,38 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
         <section className="w-full max-w-md rounded-2xl bg-white p-6 text-center shadow-2xl dark:bg-gray-900">
           <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-3xl">✓</div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Order confirmed!</h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
             Your demo order will be delivered to {order.city}.
           </p>
+          {order.delivery && (
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              Slot: <span className="font-semibold text-gray-900 dark:text-white">{order.delivery.slot}</span> on{" "}
+              <span className="font-semibold text-gray-900 dark:text-white">{order.delivery.date}</span>
+            </p>
+          )}
+
+          {Array.isArray(order.status_timeline) && order.status_timeline.length > 0 && (
+            <div className="mt-4 rounded-xl bg-gray-50 p-4 text-left dark:bg-gray-800">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Order progress
+              </p>
+              <ol className="mt-2 space-y-1.5">
+                {order.status_timeline.map((stage, i) => (
+                  <li key={stage.status} className="flex items-center gap-2 text-sm">
+                    <span className={stage.done ? "text-blinkit-green" : "text-gray-300 dark:text-gray-600"}>
+                      {stage.done ? "✓" : "○"}
+                    </span>
+                    <span className={stage.done ? "font-medium text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400"}>
+                      {stage.status}
+                    </span>
+                    {stage.done && i === 0 && (
+                      <span className="ml-auto text-xs text-gray-400">now</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
           <div className="mt-5 rounded-xl bg-gray-50 p-4 text-left dark:bg-gray-800">
             <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">Order ID</p>
             <p className="font-mono font-bold text-gray-900 dark:text-white">{order.order_id}</p>
@@ -106,6 +174,49 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
               <input required name="pincode" inputMode="numeric" value={form.pincode} onChange={updateField} className="mt-1 w-full rounded-lg border p-2.5 text-gray-900" />
             </label>
           </div>
+
+          <fieldset>
+            <legend className="text-sm font-semibold text-gray-700 dark:text-gray-200">Delivery slot</legend>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {dates.map((date) => (
+                <button
+                  key={date.date}
+                  type="button"
+                  onClick={() => setSelectedDate(date.date)}
+                  className={
+                    "rounded-lg border px-3 py-2 text-sm " +
+                    (selectedDate === date.date
+                      ? "border-blinkit-green bg-green-50 text-gray-900 font-medium dark:bg-gray-800"
+                      : "text-gray-600 dark:text-gray-300 hover:border-gray-300")
+                  }
+                >
+                  {date.date}
+                </button>
+              ))}
+            </div>
+            <div className="mt-2 grid gap-2 sm:grid-cols-2">
+              {slots.map((slot) => (
+                <button
+                  key={slot.label}
+                  type="button"
+                  disabled={slot.full}
+                  onClick={() => setSelectedSlot(slot.label)}
+                  className={
+                    "rounded-lg border p-2.5 text-left text-sm " +
+                    (selectedSlot === slot.label
+                      ? "border-blinkit-green bg-green-50 text-gray-900 dark:bg-gray-800"
+                      : "text-gray-600 dark:text-gray-300") +
+                    (slot.full ? " opacity-40 cursor-not-allowed" : " hover:border-gray-300")
+                  }
+                >
+                  <span className="font-medium">{slot.label}</span>
+                  <span className="block text-xs text-gray-400">
+                    {slot.full ? "Fully booked" : `${slot.available} slots left`}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </fieldset>
 
           <fieldset>
             <legend className="text-sm font-semibold text-gray-700 dark:text-gray-200">Payment method</legend>

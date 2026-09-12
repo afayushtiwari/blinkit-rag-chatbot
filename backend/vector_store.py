@@ -17,6 +17,7 @@ product card, not just plain text.
 
 import json
 import os
+import shutil
 from typing import List
 
 from dotenv import load_dotenv
@@ -90,6 +91,13 @@ def build_vector_store(force_rebuild: bool = False) -> Chroma:
             embedding_function=embeddings,
             persist_directory=CHROMA_DIR,
         )
+
+    # A force rebuild MUST start from a clean collection. Chroma.from_documents
+    # appends to an existing collection, so running this script repeatedly
+    # previously created duplicate documents per product (which made top-k
+    # retrieval return the same product twice).
+    if force_rebuild and os.path.exists(CHROMA_DIR):
+        shutil.rmtree(CHROMA_DIR)
 
     products = load_products()
     documents = [product_to_document(p) for p in products]

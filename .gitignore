@@ -2,9 +2,19 @@
 __pycache__/
 *.pyc
 venv/
+backend/venv/
+backend/venv-clean/
+backend/venv-fresh/
+.venv/
+backend/.venv/
 .env
+backend/.env
 backend/chroma_db/
+*.db
 backend/orders.db
+backend/carts.db
+backend/chat_memory.db
+backend/feedback.db
 
 # Node / Next.js
 node_modules/
