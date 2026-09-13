@@ -17,6 +17,7 @@ This is "agentic": the LLM chooses whether to search, fetch details, answer
 directly, or modify the customer's cart, rather than following a fixed script.
 """
 
+import logging
 import re
 import uuid
 from typing import Dict, List, Optional, Any
@@ -24,9 +25,11 @@ from typing import Dict, List, Optional, Any
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 from settings import settings
-from vector_store import build_vector_store, get_product_by_id
+from vector_store import build_vector_store, get_product_by_id, load_products
 import memory as memory_module
 from agent import run_agent_turn
+
+logger = logging.getLogger("blinkit.rag")
 
 
 class RAGPipeline:
@@ -87,6 +90,16 @@ class RAGPipeline:
         # Save this turn into memory
         memory_module.save_turn(session_id, user_message, answer_text)
 
+        # Anti-hallucination self-check: if the reply name-drops a catalog
+        # product whose details were never loaded from a tool this turn (and
+        # the user didn't already mention it or read about it earlier), append
+        # a transparent note instead of silently trusting the claim.
+        answer_text, guard_notes = self._self_check_answer(
+            answer_text, user_message, chat_history, seen_products
+        )
+        if guard_notes:
+            logger.info("Anti-hallucination guard flagged: %s", guard_notes)
+
         # ATTACH structured product cards for any product the agent handled
         product_cards = self._build_product_cards(answer_text, seen_products)
 
@@ -95,6 +108,61 @@ class RAGPipeline:
             "answer": answer_text,
             "products": product_cards,
         }
+
+    # ---------------------------------------------------------------
+    # Anti-hallucination provenance guard
+    # ---------------------------------------------------------------
+    def _self_check_answer(
+        self,
+        answer: str,
+        user_message: str,
+        history_blob: str,
+        seen_products: Dict[str, dict],
+    ) -> (str, List[str]):
+        """Verify every catalog product mentioned in the final answer was
+        actually retrieved (or already known to the user). Names the model
+        name-drops from general knowledge get an honest caveat appended."""
+        catalog = load_products()
+        low = answer.lower()
+        known_text = f"{user_message} {history_blob or ''}".lower()
+        seen_ids = {p["id"] for p in seen_products.values()}
+
+        verified = {
+            p["name"].lower()
+            for p in catalog
+            if p["name"].lower() in low and p["id"] in seen_ids
+        }
+        user_known = {
+            p["name"].lower()
+            for p in catalog
+            if p["name"].lower() in known_text
+        }
+
+        flagged = [
+            p["name"]
+            for p in catalog
+            if p["name"].lower() in low
+            and p["name"].lower() not in verified
+            and p["name"].lower() not in user_known
+        ][:3]
+
+        if not flagged:
+            return answer, []
+
+        if len(flagged) == 1:
+            note = (
+                f'\n\n[Note: I have not actually checked "{flagged[0]}" against '
+                f'the catalog in this chat - ask me, "show details of '
+                f'{flagged[0]}", and I will confirm before you add it.]'
+            )
+        else:
+            names = ", ".join(f'"{n}"' for n in flagged)
+            note = (
+                f"\n\n[Note: I referenced {names} without checking them against "
+                f"the catalog in this chat - ask me for their details before "
+                f"adding them to the cart.]"
+            )
+        return answer + note, flagged
 
     # ---------------------------------------------------------------
     # ATTACH structured product data for rendering

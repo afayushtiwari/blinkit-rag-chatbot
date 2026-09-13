@@ -59,6 +59,11 @@ to do, calls tools, sees their results, and keeps going until it can answer:
    - `search_products` → **Retrieve**: semantic similarity search over
      ChromaDB for the top-3 relevant products (this is the RAG grounding that
      prevents hallucinated prices/products).
+   - **Post-generation self-check** (`rag_pipeline.py`) — after the model
+     writes its answer, every catalog product it name-drops must have been
+     retrieved this turn (or already known from the user/history); otherwise a
+     transparent `[Note: ...]` caveat is appended instead of letting an
+     unverified claim stand.
    - `get_product_details` → fetch full reviews, FAQs, and related items.
    - `view_cart / add_to_cart / update_cart_quantity / remove_from_cart` →
      manage the customer's cart yourself, with product IDs coming from the
