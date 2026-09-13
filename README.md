@@ -179,12 +179,23 @@ cart changes it makes appear instantly in the cart badge/drawer.
 ### Backend → Render
 1. Go to https://render.com → New → Web Service → connect your GitHub repo.
 2. Set **Root Directory** to `backend`.
-3. Build command: `pip install -r requirements.txt && python vector_store.py`
-4. Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-5. Add environment variable `GOOGLE_API_KEY` with your Gemini key (and
-   optionally `LLM_MODEL` if you want a different Gemini model).
-6. Deploy, then copy the generated `https://....onrender.com` URL into
-   Vercel's `NEXT_PUBLIC_API_URL`.
+3. **Python version must be 3.12** — the pinned `scipy==1.13.1` /
+   `numpy==1.26.4` have no prebuilt wheels for Render's newer default
+   Python (3.13/3.14), and compiling scipy needs a Fortran compiler that
+   isn't present. The repo already includes `.python-version` = `3.12.10`
+   at the repo root, which Render auto-detects. If your service ignores
+   it, set the `PYTHON_VERSION` env var to `3.12.10`.
+4. Build command: `pip install -r requirements.txt && python vector_store.py`
+5. Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+6. Add environment variables:
+   - `GOOGLE_API_KEY` = your Gemini key (required — the app validates it
+     at startup and crashes without it)
+   - `ALLOWED_ORIGINS` = your deployed frontend URL (comma-separated,
+     e.g. `https://your-frontend.onrender.com,http://localhost:3000`)
+   - `LLM_MODEL` = optional, defaults to `gemini-3.5-flash-lite`
+   - `RATE_LIMIT_PER_MINUTE` = optional, defaults to `30`
+7. Deploy, then copy the generated `https://....onrender.com` URL into
+   the frontend service's `NEXT_PUBLIC_API_URL`.
 
 > Note: Render's free tier spins down after inactivity, so the first request
 > after idle time may take ~30-60 seconds — mention this during your demo if
