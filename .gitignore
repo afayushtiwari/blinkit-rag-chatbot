@@ -15,6 +15,7 @@ backend/orders.db
 backend/carts.db
 backend/chat_memory.db
 backend/feedback.db
+backend/session_data.db
 
 # Node / Next.js
 node_modules/

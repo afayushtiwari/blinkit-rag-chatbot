@@ -9,10 +9,7 @@ const WELCOME_MESSAGE =
 
 export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
   const [open, setOpen] = useState(false);
-  const [generatedSessionId] = useState(() => uuidv4());
-  const [currentSessionId, setCurrentSessionId] = useState(
-    () => sessionId || generatedSessionId
-  );
+  const [currentSessionId, setCurrentSessionId] = useState(null);
   const [messages, setMessages] = useState([
     {
       role: "bot",
@@ -23,6 +20,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
   const [feedback, setFeedback] = useState({});
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
   const [listening, setListening] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [sessions, setSessions] = useState([]);
@@ -112,6 +110,29 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
     }
   }, [messages, loading, open]);
 
+  // Adopt the page-level persistent session id once it is ready, then restore
+  // any persisted conversation so a refresh doesn't lose the chat.
+  useEffect(() => {
+    if (sessionId) setCurrentSessionId((prev) => prev || sessionId);
+  }, [sessionId]);
+
+  useEffect(() => {
+    if (!sessionId || historyLoaded) return;
+
+    fetch(`${API_URL}/api/chat/history/${sessionId}`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server responded ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        if (data.messages?.length) {
+          setMessages(data.messages);
+        }
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setHistoryLoaded(true));
+  }, [sessionId, historyLoaded]);
+
   const sendFeedback = async (messageId, vote, stars = 0, note = "") => {
     if (!messageId) return;
     setFeedback((prev) => ({ ...prev, [messageId]: { vote, stars, saved: true } }));
@@ -138,7 +159,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
 
   const sendMessage = async () => {
     const trimmed = input.trim();
-    if (!trimmed || loading) return;
+    if (!trimmed || loading || !currentSessionId || !historyLoaded) return;
 
     const userMsg = { role: "user", text: trimmed, products: [] };
     setMessages((prev) => [...prev, userMsg]);
@@ -267,6 +288,11 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
               ref={scrollRef}
               className="absolute inset-0 overflow-y-auto chat-scroll px-3 py-4 space-y-4 bg-gray-50 dark:bg-gray-950"
             >
+            {!historyLoaded && (
+              <p className="text-center text-xs text-gray-500 dark:text-gray-400">
+                Restoring your chat...
+              </p>
+            )}
             {messages.map((msg, idx) => {
               const msgFeedback = msg.messageId ? feedback[msg.messageId] || {} : null;
               return (
@@ -451,13 +477,21 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder={listening ? "Listening... speak now 🎙️" : "Ask about a product..."}
-              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blinkit-green"
+              disabled={!currentSessionId}
+              placeholder={
+                !currentSessionId
+                  ? "Preparing your chat..."
+                  : listening
+                    ? "Listening... speak now 🎙️"
+                    : "Ask about a product..."
+              }
+              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blinkit-green disabled:opacity-60"
             />
             <button
               onClick={toggleVoice}
+              disabled={!currentSessionId}
               title={listening ? "Stop voice input" : "Speak your question"}
-              className={`rounded-xl px-3 py-2 text-base font-semibold transition-colors ${
+              className={`rounded-xl px-3 py-2 text-base font-semibold transition-colors disabled:opacity-50 ${
                 listening
                   ? "bg-red-500 text-white animate-pulse"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
@@ -467,7 +501,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
             </button>
             <button
               onClick={sendMessage}
-              disabled={loading}
+              disabled={loading || !currentSessionId || !historyLoaded}
               className="bg-blinkit-green text-white rounded-xl px-4 py-2 text-sm font-semibold disabled:opacity-50"
             >
               Send

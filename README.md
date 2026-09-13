@@ -237,13 +237,27 @@ Use this structure when presenting:
 
 ---
 
+## Persistent visitor sessions
+
+QuickCart creates one anonymous browser session ID per visitor and saves it in
+browser local storage. The backend stores the corresponding cart, chat
+messages, and remembered name in `backend/session_data.db`. Refreshing the
+page — or even restarting the backend — preserves the visitor's cart and chat
+history on the same browser. The chat widget restores the conversation and the
+cart drawer restores cart items automatically on load.
+
+To deliberately start fresh, clear this site's browser storage. The database
+file is local runtime data and is intentionally excluded from Git.
+
+---
+
 ## 11. Next Features (Roadmap)
 
 Status legend: ✅ **Done** · 🚧 **Partial** · ⬜ **Planned**
 
 | # | Feature | Status | Notes |
 |---|---|---|---|
-| 1 | Multi-item cart in one message | ⬜ Planned | "Add 2 Amul Milk and 1 Maggi" triggers two `add_to_cart` calls in one agent turn |
+| 1 | Multi-item cart in one message | 🚧 Partial | `cart_agent.py` handles explicit single-product cart commands deterministically ("Add 2 Amul Milk to my cart"); multi-item commands go through the agent loop |
 | 2 | Streaming responses (SSE) | ⬜ Planned | Bot answer streams word-by-word instead of a spinner |
 | 3 | Chat feedback 👍/👎 + ⭐ | ✅ Done | `feedback.py` (SQLite), `POST /api/feedback`, `GET /api/feedback/stats`; thumbs + 5-star row under every bot answer |
 | 4 | Delivery slot booking | ✅ Done | `GET/POST /api/delivery-slots`, slot picker in checkout, slot is booked in the same transaction as the order |

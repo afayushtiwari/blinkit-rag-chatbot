@@ -20,11 +20,13 @@ FastAPI backend exposing:
   POST /api/chat/reset            -> clear a session's conversation memory
   GET  /api/chat/sessions         -> recent conversation sessions (history UI)
   GET  /api/chat/history          -> messages for one session (history UI)
+  GET  /api/chat/history/{session_id} -> persisted messages for the widget
   GET  /api/admin/stats           -> admin dashboard aggregates
 
-The chat endpoint is fully agentic: the LLM decides whether to search the
-catalog, fetch product details, or manage the cart using Gemini function
-calling -- see agent.py and rag_pipeline.py.
+The chat endpoint first tries the deterministic cart handler (cart_agent.py)
+for explicit cart commands, then falls back to the fully agentic RAG loop:
+the LLM decides whether to search the catalog, fetch product details, or
+manage the cart using Gemini function calling -- see agent.py and rag_pipeline.py.
 
 Run locally with:
     uvicorn main:app --reload --port 8000
@@ -34,6 +36,7 @@ import logging
 import os
 import re
 import traceback
+import uuid
 from typing import List, Optional
 
 from fastapi import FastAPI, HTTPException, Request
@@ -45,6 +48,7 @@ from slowapi.errors import RateLimitExceeded
 from fastapi.responses import JSONResponse
 
 from settings import settings
+from cart_agent import handle_cart_command
 from vector_store import load_products, get_product_by_id
 import memory as memory_module
 import cart as cart_module
@@ -372,10 +376,27 @@ def chat_history(request: Request, session_id: str):
     return {"session_id": session_id, "messages": history}
 
 
+@app.get("/api/chat/history/{session_id}")
+@limiter.exempt
+def chat_history_widget(request: Request, session_id: str):
+    """Persisted messages for the chat widget's refresh restore. Returns an
+    empty list for a fresh session instead of 404 so the widget stays quiet."""
+    if not SESSION_ID_PATTERN.match(session_id):
+        raise HTTPException(status_code=400, detail="Invalid session ID format")
+    return {"session_id": session_id, "messages": memory_module.get_history(session_id)}
+
+
 @app.post("/api/chat", response_model=ChatResponse)
 @limiter.limit("20/minute")
 def chat(request: Request, body: ChatRequest):
     logger.info("Chat message session=%s length=%d", body.session_id, len(body.message))
+
+    cart_result = handle_cart_command(body.session_id, body.message)
+    if cart_result is not None:
+        memory_module.save_turn(body.session_id, body.message, cart_result["answer"])
+        cart_result["cart"] = cart_module.get_cart(body.session_id)
+        cart_result["message_id"] = str(uuid.uuid4())
+        return cart_result
 
     try:
         pipeline = get_rag_pipeline()
