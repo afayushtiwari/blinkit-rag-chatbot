@@ -21,7 +21,7 @@ import shutil
 from typing import List
 
 from dotenv import load_dotenv
-from langchain_huggingface import HuggingFaceEmbeddings
+from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
 from langchain_community.vectorstores import Chroma
 from langchain.docstore.document import Document
 
@@ -76,7 +76,32 @@ def product_to_document(product: dict) -> Document:
     return Document(page_content=text, metadata=metadata)
 
 
+class OnnxEmbeddings:
+    """Lightweight MiniLM embeddings using ChromaDB's bundled ONNX model.
+
+    Produces essentially identical vectors to the sentence-transformers
+    backend (same all-MiniLM-L6-v2 model + mean pooling + L2 norm) without
+    importing PyTorch, saving ~300 MB of RAM so the app fits Render's free
+    512 MB tier.
+    """
+
+    def __init__(self):
+        self._ef = DefaultEmbeddingFunction()
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        return self._ef(texts)
+
+    def embed_query(self, text: str) -> List[float]:
+        return self._ef([text])[0]
+
+
 def get_embeddings():
+    """ONNX backend by default; set EMBEDDING_BACKEND=transformers to force
+    the sentence-transformers/PyTorch backend (used for eval parity)."""
+    if os.environ.get("EMBEDDING_BACKEND", "onnx").lower() != "transformers":
+        return OnnxEmbeddings()
+    from langchain_huggingface import HuggingFaceEmbeddings
+
     return HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )

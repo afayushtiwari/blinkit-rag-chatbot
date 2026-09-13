@@ -187,6 +187,10 @@ cart changes it makes appear instantly in the cart badge/drawer.
    it, set the `PYTHON_VERSION` env var to `3.12.10`.
 4. Build command: `pip install -r requirements.txt && python vector_store.py`
 5. Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+6. Memory note: the app defaults to ChromaDB's lightweight **ONNX** MiniLM
+   embeddings (no PyTorch) so chat works on Render's free 512 MB tier. To
+   use the PyTorch backend instead, set `EMBEDDING_BACKEND=transformers`
+   (you'll need a paid instance with more RAM).
 6. Add environment variables:
    - `GOOGLE_API_KEY` = your Gemini key (required — the app validates it
      at startup and crashes without it)
