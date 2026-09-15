@@ -11,6 +11,7 @@ from session_store import (
     set_cart_quantity,
 )
 from vector_store import get_product_by_id
+import inventory
 
 
 def _cart_summary(session_id: str) -> dict:
@@ -23,6 +24,7 @@ def _cart_summary(session_id: str) -> dict:
         if not product:
             continue
         price = float(product["price"])
+        stock = int(product.get("stock", 0))
         line_total = round(price * quantity, 2)
         subtotal += line_total
         items.append(
@@ -33,6 +35,9 @@ def _cart_summary(session_id: str) -> dict:
                 "quantity": quantity,
                 "line_total": line_total,
                 "image_url": product.get("image_url", ""),
+                "stock": stock,
+                "in_stock": stock > 0,
+                "max_quantity": max(min(quantity, stock), 1) if stock > 0 else 0,
             }
         )
 
@@ -49,8 +54,24 @@ def get_cart(session_id: str) -> dict:
 
 
 def add_to_cart(session_id: str, product_id: str, quantity: int = 1) -> dict:
-    if not get_product_by_id(product_id):
+    product = get_product_by_id(product_id)
+    if not product:
         raise HTTPException(status_code=404, detail="Product not found")
+
+    stock = int(product.get("stock", 0))
+    if stock <= 0:
+        raise HTTPException(
+            status_code=409,
+            detail=f"Sorry, {product['name']} is currently out of stock.",
+        )
+
+    current = get_cart_quantities(session_id).get(product_id, 0)
+    requested = current + quantity
+    if requested > stock:
+        raise HTTPException(
+            status_code=409,
+            detail=f"Only {stock} unit(s) of {product['name']} are available.",
+        )
 
     add_cart_quantity(session_id, product_id, quantity)
     return _cart_summary(session_id)
@@ -60,6 +81,22 @@ def update_quantity(session_id: str, product_id: str, quantity: int) -> dict:
     current_cart = get_cart_quantities(session_id)
     if product_id not in current_cart:
         raise HTTPException(status_code=404, detail="Product is not in the cart")
+
+    if quantity > 0:
+        product = get_product_by_id(product_id)
+        if not product:
+            raise HTTPException(status_code=404, detail="Product not found")
+        stock = int(product.get("stock", 0))
+        if stock <= 0:
+            raise HTTPException(
+                status_code=409,
+                detail=f"Sorry, {product['name']} is currently out of stock.",
+            )
+        if quantity > stock:
+            raise HTTPException(
+                status_code=409,
+                detail=f"Only {stock} unit(s) of {product['name']} are available.",
+            )
 
     set_cart_quantity(session_id, product_id, quantity)
     return _cart_summary(session_id)

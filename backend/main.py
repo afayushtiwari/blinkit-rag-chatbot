@@ -56,6 +56,7 @@ import memory as memory_module
 import cart as cart_module
 import feedback as feedback_module
 import orders
+import inventory
 
 logging.basicConfig(
     level=logging.INFO,
@@ -357,7 +358,36 @@ def admin_stats(request: Request):
             ),
         },
         "recent_feedback": feedback_module.list_recent(10),
+        "low_stock": inventory.low_stock_items(3),
     }
+
+
+@app.get("/api/inventory/low-stock")
+@limiter.exempt
+def inventory_low_stock(request: Request, threshold: int = 3):
+    """Products running low on stock (for admin restocking alerts)."""
+    return {"low_stock": inventory.low_stock_items(max(min(threshold, 10), 1))}
+
+
+class RestockRequest(BaseModel):
+    product_id: str = Field(min_length=1, max_length=50)
+    quantity: int = Field(ge=0, le=10000)
+
+
+@app.post("/api/admin/restock")
+def admin_restock(request: Request, body: RestockRequest):
+    """Set an absolute stock level for a product (demo admin restock)."""
+    if not get_product_by_id(body.product_id):
+        raise HTTPException(status_code=404, detail="Product not found")
+    inventory.set_stock(body.product_id, body.quantity)
+    return {"product_id": body.product_id, "stock": body.quantity}
+
+
+@app.post("/api/admin/restock-all")
+def admin_restock_all(request: Request):
+    """Reset every product to the default stock level (demo reset)."""
+    inventory.restock_all()
+    return {"status": "restocked", "default_stock": inventory.DEFAULT_STOCK}
 
 
 @app.get("/api/chat/sessions")

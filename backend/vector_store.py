@@ -25,6 +25,8 @@ from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
 from langchain_community.vectorstores import Chroma
 from langchain.docstore.document import Document
 
+import inventory
+
 load_dotenv()
 
 # Path to persisted Chroma collection on disk
@@ -33,10 +35,19 @@ PRODUCTS_PATH = os.path.join(os.path.dirname(__file__), "data", "products.json")
 COLLECTION_NAME = "blinkit_products"
 
 
-def load_products() -> List[dict]:
-    """Load the raw product dataset from JSON."""
+def _load_products_raw() -> List[dict]:
+    """Load the raw product dataset from JSON (no live stock)."""
     with open(PRODUCTS_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def load_products() -> List[dict]:
+    """Load the product catalog with LIVE stock attached from inventory."""
+    products = _load_products_raw()
+    stock = inventory.get_all_stock()
+    for product in products:
+        product["stock"] = stock.get(product["id"], 0)
+    return products
 
 
 def product_to_document(product: dict) -> Document:
@@ -124,7 +135,7 @@ def build_vector_store(force_rebuild: bool = False) -> Chroma:
     if force_rebuild and os.path.exists(CHROMA_DIR):
         shutil.rmtree(CHROMA_DIR)
 
-    products = load_products()
+    products = _load_products_raw()
     documents = [product_to_document(p) for p in products]
 
     vector_store = Chroma.from_documents(
@@ -141,11 +152,11 @@ def build_vector_store(force_rebuild: bool = False) -> Chroma:
 def get_product_by_id(product_id: str) -> dict:
     """Utility to fetch the full raw product record by its ID (used to
     attach full product-card data, including related_products, to a chat
-    response)."""
-    products = load_products()
-    for p in products:
-        if p["id"] == product_id:
-            return p
+    response), with LIVE stock attached."""
+    for product in _load_products_raw():
+        if product["id"] == product_id:
+            product["stock"] = inventory.get_stock(product_id)
+            return product
     return None
 
 

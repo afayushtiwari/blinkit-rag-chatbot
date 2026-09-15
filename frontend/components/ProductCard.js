@@ -1,6 +1,10 @@
 export default function ProductCard({ product, onAddToCart, compact = false }) {
   if (!product) return null;
 
+  const stock = Number.isFinite(product.stock) ? product.stock : null;
+  const outOfStock = stock !== null && stock <= 0;
+  const lowStock = stock !== null && stock > 0 && stock <= 3;
+
   return (
     <div
       className={`bg-white dark:bg-gray-800 rounded-xl2 shadow-soft hover:shadow-lg transition-shadow overflow-hidden flex flex-col ${
@@ -19,6 +23,11 @@ export default function ProductCard({ product, onAddToCart, compact = false }) {
             ★ {product.rating}
           </span>
         )}
+        {outOfStock && (
+          <span className="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-md">
+            Out of stock
+          </span>
+        )}
       </div>
 
       <div className="p-3 flex flex-col flex-1">
@@ -31,15 +40,26 @@ export default function ProductCard({ product, onAddToCart, compact = false }) {
           </p>
         )}
 
+        {lowStock && (
+          <p className="mt-1 text-xs font-semibold text-orange-600 dark:text-orange-400">
+            Only {stock} left
+          </p>
+        )}
+
         <div className="mt-auto pt-2 flex items-center justify-between">
           <span className="font-bold text-gray-900 dark:text-white">
             ₹{product.price}
           </span>
           <button
             onClick={() => onAddToCart && onAddToCart(product)}
-            className="text-xs font-bold border border-blinkit-green text-blinkit-green px-3 py-1 rounded-lg hover:bg-blinkit-green hover:text-white transition-colors"
+            disabled={outOfStock}
+            className={
+              outOfStock
+                ? "text-xs font-bold border border-gray-300 text-gray-400 px-3 py-1 rounded-lg cursor-not-allowed"
+                : "text-xs font-bold border border-blinkit-green text-blinkit-green px-3 py-1 rounded-lg hover:bg-blinkit-green hover:text-white transition-colors"
+            }
           >
-            ADD
+            {outOfStock ? "SOLD OUT" : "ADD"}
           </button>
         </div>
       </div>

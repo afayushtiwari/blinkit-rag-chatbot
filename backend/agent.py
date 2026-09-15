@@ -141,11 +141,14 @@ name, brand, category, price, rating and a short summary."""
             if meta["id"] in seen_ids:
                 continue  # skip duplicate documents from stale collections
             seen_ids.add(meta["id"])
-            _remember(get_product_by_id(meta["id"]))
+            product = get_product_by_id(meta["id"])
+            _remember(product)
+            stock = product.get("stock", 0) if product else 0
+            stock_note = "OUT OF STOCK" if stock <= 0 else f"stock: {stock}"
             lines.append(
                 f"[{meta['id']}] {meta['name']} - brand {meta['brand']}, "
                 f"category {meta['category']}, Rs. {meta['price']}, "
-                f"rating {meta['rating']}/5"
+                f"rating {meta['rating']}/5, {stock_note}"
             )
             lines.append("Details: " + doc.page_content.strip())
         if not lines:
@@ -155,12 +158,16 @@ name, brand, category, price, rating and a short summary."""
     @tool
     def get_product_details(product_id: str) -> str:
         """Get the full details of a product by its id (e.g. 'P001'): \
-description, customer reviews, FAQs, and related products."""
+description, customer reviews, FAQs, related products, and stock."""
         product = get_product_by_id(product_id)
         if not product:
             return f"Product with id '{product_id}' was not found."
         _remember(product)
-        return json.dumps(product, indent=2, ensure_ascii=False)
+        details = json.loads(json.dumps(product, ensure_ascii=False))
+        stock = details.pop("stock", 0)
+        details["stock_available"] = stock
+        details["stock_status"] = "In Stock" if stock > 0 else "Out of Stock"
+        return json.dumps(details, indent=2, ensure_ascii=False)
 
     @tool
     def view_cart() -> str:

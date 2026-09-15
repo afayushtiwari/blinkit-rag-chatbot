@@ -27,6 +27,22 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
   );
   const total = Number(cart.subtotal) + deliveryFee;
 
+  // Items that can't be checked out: out of stock, or quantity over available.
+  const stockIssues = useMemo(() => {
+    const problems = [];
+    for (const item of cart.items || []) {
+      if (item.in_stock === false) {
+        problems.push(`${item.name} is currently out of stock.`);
+      } else if (item.stock != null && item.quantity > item.stock) {
+        problems.push(
+          `${item.name}: only ${item.stock} available but your cart has ${item.quantity}.`
+        );
+      }
+    }
+    return problems;
+  }, [cart.items]);
+  const checkoutBlocked = stockIssues.length > 0;
+
   useEffect(() => {
     fetch(`${API_URL}/api/delivery-slots`)
       .then((res) => res.json())
@@ -236,9 +252,20 @@ export default function CheckoutModal({ cart, sessionId, onClose, onOrderPlaced 
             <div className="mt-3 flex justify-between border-t pt-3 text-base font-bold dark:border-gray-700"><span>Total</span><span>₹{total}</span></div>
           </div>
 
+          {stockIssues.length > 0 && (
+            <div className="rounded-lg bg-amber-50 p-3 text-sm text-amber-800 dark:bg-amber-900/30 dark:text-amber-200">
+              <p className="font-semibold">Some items can&apos;t be ordered right now:</p>
+              <ul className="mt-1 list-disc pl-4">
+                {stockIssues.map((issue) => (
+                  <li key={issue}>{issue}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {error && <p className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</p>}
 
-          <button disabled={submitting} className="w-full rounded-xl bg-blinkit-green px-4 py-3 font-semibold text-white hover:bg-blinkit-green-dark disabled:opacity-60">
+          <button disabled={submitting || checkoutBlocked} className="w-full rounded-xl bg-blinkit-green px-4 py-3 font-semibold text-white hover:bg-blinkit-green-dark disabled:opacity-60">
             {submitting ? "Placing your order..." : `Place demo order · ₹${total}`}
           </button>
         </form>

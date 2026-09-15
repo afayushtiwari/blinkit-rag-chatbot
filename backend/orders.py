@@ -16,6 +16,7 @@ from threading import Lock
 from fastapi import HTTPException
 
 import cart
+import inventory
 
 
 DATABASE_PATH = Path(__file__).with_name("orders.db")
@@ -253,6 +254,35 @@ def get_booked_slot(order_id: str) -> dict | None:
     return {"date": row["date"], "slot": row["slot_label"]}
 
 
+def _verify_and_reserve_stock(items: list[dict]) -> None:
+    """Check every cart line against live inventory and reserve (decrement)
+    the stock ATOMICALLY. Raises HTTPException 409 if any line exceeds
+    availability; in that case nothing is decremented because this function
+    validates everything BEFORE mutating."""
+    for item in items:
+        product_id = item["product_id"]
+        quantity = item["quantity"]
+        from vector_store import get_product_by_id
+        product = get_product_by_id(product_id)
+        if product is None:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Product {product_id} in your cart no longer exists.",
+            )
+        available = inventory.get_stock(product_id)
+        if available < quantity:
+            raise HTTPException(
+                status_code=409,
+                detail=(
+                    f"Only {available} unit(s) of {product['name']} are in stock "
+                    f"but your cart needs {quantity}. Remove some or check back later."
+                ),
+            )
+    # Every line validated -> now reserve.
+    for item in items:
+        inventory.decrement_stock(item["product_id"], item["quantity"])
+
+
 def create_order(
     session_id: str,
     customer_name: str,
@@ -296,6 +326,12 @@ def create_order(
                 raise HTTPException(
                     status_code=400, detail="You can only book slots for tomorrow or later."
                 )
+
+        # Reserve stock from live inventory BEFORE writing the order, so a slot
+        # conflict or any other failure never consumes inventory. Slot bookings
+        # are serialised under the same _db_lock, so availability cannot change
+        # between the check here and the insert below.
+        _verify_and_reserve_stock(current_cart["items"])
 
         _initialise_database()
         with _connection() as connection:

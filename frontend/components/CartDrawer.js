@@ -31,10 +31,21 @@ export default function CartDrawer({ cart, open, onClose, onUpdateQuantity, onRe
                       <div className="flex items-center gap-2">
                         <button onClick={() => onUpdateQuantity(item.product_id, item.quantity - 1)} className="w-7 h-7 border rounded font-bold">−</button>
                         <span className="w-5 text-center text-sm">{item.quantity}</span>
-                        <button onClick={() => onUpdateQuantity(item.product_id, item.quantity + 1)} className="w-7 h-7 border rounded font-bold">+</button>
+                        <button
+                          onClick={() => onUpdateQuantity(item.product_id, item.quantity + 1)}
+                          disabled={item.in_stock === false || item.quantity >= item.stock}
+                          className="w-7 h-7 border rounded font-bold disabled:opacity-30 disabled:cursor-not-allowed"
+                        >
+                          +
+                        </button>
                       </div>
                       <button onClick={() => onRemove(item.product_id)} className="text-xs font-semibold text-red-600">Remove</button>
                     </div>
+                    {item.in_stock === false ? (
+                      <p className="mt-1 text-xs font-semibold text-red-600">Out of stock</p>
+                    ) : item.stock != null && item.quantity >= item.stock ? (
+                      <p className="mt-1 text-xs text-orange-600">Only {item.stock} available — max reached</p>
+                    ) : null}
                   </div>
                   <span className="font-bold text-sm text-gray-900 dark:text-white">₹{item.line_total}</span>
                 </div>
