@@ -279,6 +279,7 @@ def run_agent_turn(
     name_line: str,
     vector_store,
     seen_products: Dict[str, dict],
+    rewritten_query: str = None,
     trace: List[dict] = None,
 ) -> str:
     """Run the model-versus-tools loop for one user message.
@@ -288,6 +289,11 @@ def run_agent_turn(
     so the caller can attach rich product cards to the reply. If a `trace`
     list is passed in, each step is appended to it (tool name, args, result)
     for debugging and logging.
+
+    `rewritten_query` (optional) is a standalone, history-aware search query
+    produced by query_rewriter.py for ambiguous follow-ups ("what about the
+    curd?"); when supplied it is injected as explicit guidance so the
+    agent's `search_products` call runs against the disambiguated query.
 
     Design note: Gemini 3+ models require a `thought_signature` to be echoed
     back whenever a previous `functionCall` part is replayed in the request
@@ -311,6 +317,14 @@ def run_agent_turn(
         f"CONVERSATION HISTORY SO FAR:\n{history_blob or '(no previous messages)'}\n\n"
         f"CUSTOMER'S NEW QUESTION:\n{user_message}"
     )
+
+    if rewritten_query:
+        conversation += (
+            f"\n\nSEARCH GUIDANCE (provided by the query rewriter): the customer's "
+            f"follow-up refers to context from earlier in the chat. When you call "
+            f"search_products(), use THIS standalone query so retrieval matches the "
+            f"right products:\n{rewritten_query}"
+        )
 
     for step in range(MAX_AGENT_STEPS):
         response = model.invoke(

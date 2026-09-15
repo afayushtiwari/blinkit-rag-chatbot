@@ -283,7 +283,7 @@ Status legend: ✅ **Done** · 🚧 **Partial** · ⬜ **Planned**
 | 4 | Delivery slot booking | ✅ Done | `GET/POST /api/delivery-slots`, slot picker in checkout, slot is booked in the same transaction as the order |
 | 5 | Order tracking | ✅ Done | `get_order_status` tool + live timeline (Placed → Packed → On the way → Delivered) that resolves from elapsed time; shown in the checkout confirmation and chat |
 | 6 | Voice input | ✅ Done | Web Speech API mic button in the chat widget (works in Chrome; text answer still rendered) |
-| 7 | Query rewriting | ⬜ Planned | Rewrite ambiguous follow-ups ("what about the curd?") into a standalone search query before retrieval |
+| 7 | Query rewriting | ✅ Done | `backend/query_rewriter.py` detects ambiguous follow-ups ("what about the curd?", "is it cheaper?") via heuristics and rewrites them into standalone search queries (LLM rewrite + deterministic fallback) before retrieval |
 | 8 | RAG evaluation harness | ✅ Done | `backend/evaluate.py` scores `search_products` over 24 question → expected-product pairs (Accuracy@1, Recall@3, MRR) |
 | 9 | Admin analytics dashboard | ✅ Done | `/admin` page + `GET /api/admin/stats`: chat counts, top asked products, average ⭐, cart-abandonment, recent feedback |
 | 10 | Conversation history UI | ✅ Done | 🕘 panel in the widget: `GET /api/chat/sessions` + `GET /api/chat/history`, browse and resume past chats |

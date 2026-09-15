@@ -28,6 +28,7 @@ from settings import settings
 from vector_store import build_vector_store, get_product_by_id, load_products
 import memory as memory_module
 from agent import run_agent_turn
+from query_rewriter import rewrite_query
 
 logger = logging.getLogger("blinkit.rag")
 
@@ -74,6 +75,11 @@ class RAGPipeline:
         name_line = f"The customer's name is {user_name}." if user_name else \
             "You do not know the customer's name yet."
 
+        # Rewrite ambiguous follow-ups ("what about the curd?") into a
+        # standalone query so retrieval matches the right products. This is
+        # skipped (no extra LLM call) for questions that are already clear.
+        rewritten_query = rewrite_query(self.llm, user_message, chat_history)
+
         # Products the agent touched during this turn (id -> full product record)
         seen_products: Dict[str, dict] = {}
 
@@ -85,6 +91,7 @@ class RAGPipeline:
             name_line=name_line,
             vector_store=self.vector_store,
             seen_products=seen_products,
+            rewritten_query=rewritten_query,
         )
 
         # Save this turn into memory
