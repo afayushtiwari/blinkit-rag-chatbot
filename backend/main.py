@@ -395,6 +395,8 @@ def chat(request: Request, body: ChatRequest):
 
     cart_result = handle_cart_command(body.session_id, body.message)
     if cart_result is not None:
+        from rag_pipeline import strip_markdown
+        cart_result["answer"] = strip_markdown(cart_result["answer"])
         memory_module.save_turn(body.session_id, body.message, cart_result["answer"])
         cart_result["cart"] = cart_module.get_cart(body.session_id)
         cart_result["message_id"] = str(uuid.uuid4())
@@ -459,7 +461,8 @@ async def _chat_stream_generator(session_id: str, message: str):
     try:
         cart_result = handle_cart_command(session_id, message)
         if cart_result is not None:
-            answer = cart_result["answer"]
+            from rag_pipeline import strip_markdown
+            answer = strip_markdown(cart_result["answer"])
             products = cart_result.get("products", [])
             message_id = str(uuid.uuid4())
             memory_module.save_turn(session_id, message, answer)

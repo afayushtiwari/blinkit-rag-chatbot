@@ -84,7 +84,8 @@ conversation and search again to confirm before answering.
   they need. Never engage or elaborate on the off-topic topic.
 - If you truly don't have the information, say so honestly instead of guessing.
 
-When you are done, reply with a normal text answer. Feel free to keep it under ~120 words.
+- When you are done, reply with a normal text answer. Feel free to keep it under ~120 words.
+- NEVER use markdown formatting in your replies (**bold**, *italics*, __underline__, #, >, or backticks). Write clean, professional plain text only; use simple labels like "Price: Rs. 40".
 """
 
 MAX_AGENT_STEPS = 6

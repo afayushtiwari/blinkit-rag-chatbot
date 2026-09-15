@@ -33,6 +33,22 @@ from query_rewriter import rewrite_query
 logger = logging.getLogger("blinkit.rag")
 
 
+def strip_markdown(text: str) -> str:
+    """Remove common markdown markers so answers render as clean plain text
+    in the chat widget (Gemini sometimes wraps a word like **bold**)."""
+    if not text:
+        return text
+    text = re.sub(r"\*\*(.+?)\*\*", r"\1", text, flags=re.DOTALL)
+    text = re.sub(r"\*(.+?)\*", r"\1", text, flags=re.DOTALL)
+    text = re.sub(r"__(.+?)__", r"\1", text, flags=re.DOTALL)
+    text = re.sub(r"_(.+?)_", r"\1", text, flags=re.DOTALL)
+    text = re.sub(r"`([^`]*)`", r"\1", text)
+    text = re.sub(r"^[ \t]*#{1,6}[ \t]*", "", text, flags=re.MULTILINE)
+    text = text.replace("*", "").replace("`", "")
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
 class RAGPipeline:
     def __init__(self):
         self.vector_store = build_vector_store()
@@ -93,6 +109,9 @@ class RAGPipeline:
             seen_products=seen_products,
             rewritten_query=rewritten_query,
         )
+
+        # Clean markdown out of the final answer before it is stored / streamed
+        answer_text = strip_markdown(answer_text)
 
         # Save this turn into memory
         memory_module.save_turn(session_id, user_message, answer_text)

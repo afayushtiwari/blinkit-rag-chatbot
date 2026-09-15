@@ -33,6 +33,17 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
   const recognitionRef = useRef(null);
   const streamErrorRef = useRef(null);
 
+  const cleanText = (text) =>
+    (text || "")
+      .replace(/\*\*([\s\S]*?)\*\*/g, "$1")
+      .replace(/\*([\s\S]*?)\*/g, "$1")
+      .replace(/__([\s\S]*?)__/g, "$1")
+      .replace(/`([^`]*)`/g, "$1")
+      .replace(/^[ \t]*#{1,6}[ \t]*/gm, "")
+      .replace(/[*`]/g, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
   const formatTime = (iso) => {
     if (!iso) return "";
     try {
@@ -397,7 +408,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
                         <span className="typing-dot w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full inline-block" />
                       </span>
                     ) : (
-                      msg.text
+                      cleanText(msg.text)
                     )}
                     {msg.streamed && streaming && msg.text && (
                       <span className="ml-0.5 inline-block w-1 h-3.5 bg-blinkit-green rounded-sm animate-pulse" />
@@ -499,7 +510,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
                                 : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-bl-sm"
                             }`}
                           >
-                            {m.text}
+                            {cleanText(m.text)}
                           </div>
                         </div>
                       ))}
