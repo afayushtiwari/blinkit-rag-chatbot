@@ -1,364 +1,3202 @@
 [
   {
     "id": "P001",
-    "name": "Amul Taaza Toned Milk",
+    "name": "Amul Gold Full Cream Milk",
     "category": "Dairy",
     "brand": "Amul",
-    "price": 32,
-    "rating": 4.5,
-    "description": "Fresh toned milk packed with calcium and protein, sourced daily from Amul dairy farms. Perfect for daily consumption, tea, coffee, and cooking.",
+    "price": 34,
+    "mrp": 34,
+    "rating": 4.67,
+    "unit": "500 ml",
+    "stock": 12,
+    "description": "Amul Gold Full Cream Milk from Amul (500 ml) — a top-rated dairy product on Blinkit with a 4.67/5 customer rating.",
     "reviews": [
-      "Very fresh and creamy, my kids love it every morning.",
-      "Consistent quality, best milk brand in India.",
-      "Good for making paneer and curd at home."
+      "Top-notch quality, will order again.",
+      "Exactly as described, very satisfied."
     ],
     "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "What is the shelf life?", "a": "Best consumed within 2 days of opening if refrigerated."},
-      {"q": "Is it pasteurized?", "a": "Yes, it is fully pasteurized and safe for direct consumption."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P002", "P010"]
+    "related_products": [
+      "P002",
+      "P003",
+      "P004"
+    ]
   },
   {
     "id": "P002",
-    "name": "Amul Fresh Curd",
+    "name": "Amul Taaza Toned Milk",
     "category": "Dairy",
     "brand": "Amul",
-    "price": 40,
-    "rating": 4.4,
-    "description": "Thick and creamy curd made from fresh milk, rich in probiotics and great for digestion.",
+    "price": 29,
+    "mrp": 29,
+    "rating": 4.62,
+    "unit": "500 ml",
+    "stock": 9,
+    "description": "Amul Taaza Toned Milk from Amul (500 ml) — a top-rated dairy product on Blinkit with a 4.62/5 customer rating.",
     "reviews": [
-      "Perfect consistency, not too sour.",
-      "Great for making raita and lassi."
+      "A staple in our kitchen, never disappoints.",
+      "Taste and quality are both excellent."
     ],
-    "image_url": "https://images.unsplash.com/photo-1584278858536-52532423b9ea?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Does it contain added sugar?", "a": "No, it is plain unsweetened curd."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P001", "P003"]
+    "related_products": [
+      "P001",
+      "P003",
+      "P004"
+    ]
   },
   {
     "id": "P003",
-    "name": "Amul Butter",
+    "name": "Amul Fresh Malai Paneer",
     "category": "Dairy",
     "brand": "Amul",
-    "price": 56,
-    "rating": 4.6,
-    "description": "Classic salted butter made from fresh cream, perfect for toast, cooking, and baking.",
+    "price": 105,
+    "mrp": 105,
+    "rating": 4.66,
+    "unit": "200 g",
+    "stock": 15,
+    "description": "Amul Fresh Malai Paneer from Amul (200 g) — a top-rated dairy product on Blinkit with a 4.66/5 customer rating.",
     "reviews": [
-      "Iconic taste, been using it for years.",
-      "Melts perfectly on hot parathas."
+      "Fresh and well-packaged, happy with the purchase.",
+      "A staple in our kitchen, never disappoints."
     ],
-    "image_url": "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Does it need refrigeration?", "a": "Yes, refrigerate after opening for best shelf life."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P001", "P002"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P004"
+    ]
   },
   {
     "id": "P004",
-    "name": "Britannia Whole Wheat Bread",
-    "category": "Bakery",
-    "brand": "Britannia",
-    "price": 45,
-    "rating": 4.2,
-    "description": "Soft whole wheat bread made with 100% whole wheat flour, no maida, ideal for a healthy breakfast.",
+    "name": "Amul Taaza Toned Milk - Pack of 2",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 34,
+    "mrp": 34,
+    "rating": 4.68,
+    "unit": "2 x 200 ml",
+    "stock": 30,
+    "description": "Amul Taaza Toned Milk - Pack of 2 from Amul (2 x 200 ml) — a top-rated dairy product on Blinkit with a 4.68/5 customer rating.",
     "reviews": [
-      "Soft texture and stays fresh for 3-4 days.",
-      "Good for weight watchers, high fiber content."
+      "Exactly as described, very satisfied.",
+      "Fresh and well-packaged, happy with the purchase."
     ],
-    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Is it suitable for diabetics?", "a": "It has lower glycemic impact than white bread but consult a doctor for dietary advice."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P005", "P003"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P005",
-    "name": "Britannia Marie Gold Biscuits",
-    "category": "Snacks",
-    "brand": "Britannia",
+    "name": "Amul Moti Toned Milk (90 Days Shelf Life)",
+    "category": "Dairy",
+    "brand": "Amul",
     "price": 30,
-    "rating": 4.3,
-    "description": "Light and crispy tea-time biscuits made with wheat and enriched with vitamins.",
+    "mrp": 30,
+    "rating": 4.5,
+    "unit": "450 ml",
+    "stock": 16,
+    "description": "Amul Moti Toned Milk (90 Days Shelf Life) from Amul (450 ml) — a top-rated dairy product on Blinkit with a 4.5/5 customer rating.",
     "reviews": [
-      "Perfect with evening chai.",
-      "Kids love it as a light snack."
+      "Perfect for daily use, great product.",
+      "Top-notch quality, will order again."
     ],
-    "image_url": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Does it contain trans fat?", "a": "No, it is a trans-fat free product."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P004", "P006"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P006",
-    "name": "Lay's Classic Salted Chips",
-    "category": "Snacks",
-    "brand": "Lay's",
-    "price": 20,
-    "rating": 4.4,
-    "description": "Crispy potato chips made from fresh potatoes with a classic salted flavor.",
+    "name": "Amul Taaza Homogenised Toned Milk",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 77,
+    "mrp": 77,
+    "rating": 4.72,
+    "unit": "1 ltr",
+    "stock": 30,
+    "description": "Amul Taaza Homogenised Toned Milk from Amul (1 ltr) — a top-rated dairy product on Blinkit with a 4.72/5 customer rating.",
     "reviews": [
-      "Perfectly crispy and not too oily.",
-      "Great for parties and movie nights."
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
     ],
-    "image_url": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Is it vegetarian?", "a": "Yes, 100% vegetarian, contains no animal products."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P007", "P005"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P007",
-    "name": "Lay's Magic Masala Chips",
-    "category": "Snacks",
-    "brand": "Lay's",
-    "price": 20,
-    "rating": 4.5,
-    "description": "Spicy and tangy potato chips coated with the popular magic masala seasoning.",
+    "name": "Mother Dairy Classic Cup Curd",
+    "category": "Dairy",
+    "brand": "Mother Dairy",
+    "price": 25,
+    "mrp": 25,
+    "rating": 4.65,
+    "unit": "200 g",
+    "stock": 4,
+    "description": "Mother Dairy Classic Cup Curd from Mother Dairy (200 g) — a top-rated dairy product on Blinkit with a 4.65/5 customer rating.",
     "reviews": [
-      "Best flavored chips in the market.",
-      "Perfect balance of spice and tang."
+      "Consistent taste and always fresh on delivery.",
+      "Great value for money at this price point."
     ],
-    "image_url": "https://images.unsplash.com/photo-1613919113640-25732ec5e61f?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "How spicy is it?", "a": "Mild to medium spice level, suitable for most people."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P006", "P008"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P008",
-    "name": "Coca-Cola 750ml",
-    "category": "Beverages",
-    "brand": "Coca-Cola",
-    "price": 40,
-    "rating": 4.3,
-    "description": "Refreshing carbonated soft drink with the classic Coca-Cola taste, best served chilled.",
+    "name": "Nandini Shubham Pasteurised Standardized Toned Milk",
+    "category": "Dairy",
+    "brand": "Nandini",
+    "price": 27,
+    "mrp": 27,
+    "rating": 4.53,
+    "unit": "500 ml",
+    "stock": 12,
+    "description": "Nandini Shubham Pasteurised Standardized Toned Milk from Nandini (500 ml) — a top-rated dairy product on Blinkit with a 4.53/5 customer rating.",
     "reviews": [
-      "Great taste, perfect for parties.",
-      "Always refreshing on a hot day."
+      "A staple in our kitchen, never disappoints.",
+      "Taste and quality are both excellent."
     ],
-    "image_url": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Is it caffeinated?", "a": "Yes, it contains caffeine."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P009", "P006"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P009",
-    "name": "Real Fruit Power Mixed Fruit Juice",
-    "category": "Beverages",
-    "brand": "Real",
-    "price": 110,
-    "rating": 4.2,
-    "description": "No added preservatives juice made from a blend of real mixed fruits, rich in Vitamin C.",
+    "name": "Nandini Pouch Curd",
+    "category": "Dairy",
+    "brand": "Nandini",
+    "price": 28,
+    "mrp": 28,
+    "rating": 4.69,
+    "unit": "500 g",
+    "stock": 30,
+    "description": "Nandini Pouch Curd from Nandini (500 g) — a top-rated dairy product on Blinkit with a 4.69/5 customer rating.",
     "reviews": [
-      "Tastes very natural, not too sweet.",
-      "Good source of daily vitamins for kids."
+      "A staple in our kitchen, never disappoints.",
+      "Taste and quality are both excellent."
     ],
-    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Does it contain added sugar?", "a": "It contains natural fruit sugars with minimal added sugar."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P008", "P011"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P010",
-    "name": "Maggi 2-Minute Noodles",
-    "category": "Instant Food",
-    "brand": "Nestle",
-    "price": 14,
-    "rating": 4.6,
-    "description": "India's favorite instant noodles, ready in just 2 minutes with a masala tastemaker.",
+    "name": "Mother Dairy Mishti Doi",
+    "category": "Dairy",
+    "brand": "Mother Dairy",
+    "price": 17,
+    "mrp": 20,
+    "rating": 4.51,
+    "unit": "80 g",
+    "stock": 8,
+    "description": "Mother Dairy Mishti Doi from Mother Dairy (80 g) — a top-rated dairy product on Blinkit with a 4.51/5 customer rating.",
     "reviews": [
-      "Nostalgic taste, perfect for quick hunger fix.",
-      "Best instant noodles, kids and adults both love it."
+      "Exactly as described, very satisfied.",
+      "Fresh and well-packaged, happy with the purchase."
     ],
-    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Is it healthy?", "a": "It is a convenience food; best enjoyed occasionally as part of a balanced diet."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P004", "P001"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P011",
-    "name": "Fresh Bananas (6 pcs)",
-    "category": "Fruits",
-    "brand": "Farm Fresh",
-    "price": 45,
-    "rating": 4.5,
-    "description": "Naturally ripened fresh bananas, rich in potassium and fiber, ideal for a healthy snack.",
+    "name": "Amul Pouch Curd",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 28,
+    "mrp": 28,
+    "rating": 4.61,
+    "unit": "450 g",
+    "stock": 7,
+    "description": "Amul Pouch Curd from Amul (450 g) — a top-rated dairy product on Blinkit with a 4.61/5 customer rating.",
     "reviews": [
-      "Very fresh and sweet.",
-      "Good quality, delivered ripe and ready to eat."
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
     ],
-    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "How should I store them?", "a": "Store at room temperature away from direct sunlight."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P012", "P009"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P012",
-    "name": "Fresh Apples (Shimla) 1kg",
-    "category": "Fruits",
-    "brand": "Farm Fresh",
-    "price": 150,
-    "rating": 4.4,
-    "description": "Crisp and juicy Shimla apples, handpicked and rich in fiber and antioxidants.",
+    "name": "Nandini Toned Milk",
+    "category": "Dairy",
+    "brand": "Nandini",
+    "price": 24,
+    "mrp": 24,
+    "rating": 4.56,
+    "unit": "500 ml",
+    "stock": 12,
+    "description": "Nandini Toned Milk from Nandini (500 ml) — a top-rated dairy product on Blinkit with a 4.56/5 customer rating.",
     "reviews": [
-      "Very crunchy and fresh.",
-      "Good size and sweetness, kids enjoy them."
+      "Taste and quality are both excellent.",
+      "Good portion size and arrives fresh."
     ],
-    "image_url": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Are these organic?", "a": "These are farm fresh but not certified organic."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P011", "P009"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P013",
-    "name": "Cadbury Dairy Milk Chocolate",
-    "category": "Chocolates",
-    "brand": "Cadbury",
-    "price": 50,
-    "rating": 4.7,
-    "description": "Smooth and creamy milk chocolate bar, a classic treat for all occasions.",
+    "name": "Heritage Daily Health Toned Milk",
+    "category": "Dairy",
+    "brand": "Heritage",
+    "price": 27,
+    "mrp": 27,
+    "rating": 4.6,
+    "unit": "500 ml",
+    "stock": 12,
+    "description": "Heritage Daily Health Toned Milk from Heritage (500 ml) — a top-rated dairy product on Blinkit with a 4.6/5 customer rating.",
     "reviews": [
-      "Melts perfectly in mouth, best chocolate.",
-      "Great for gifting and self-indulgence."
+      "A staple in our kitchen, never disappoints.",
+      "Taste and quality are both excellent."
     ],
-    "image_url": "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Does it contain nuts?", "a": "No, the classic variant is nut-free, but check for cross-contamination warnings."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P014", "P005"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P014",
-    "name": "Kinder Joy Chocolate Egg",
-    "category": "Chocolates",
-    "brand": "Ferrero",
-    "price": 45,
-    "rating": 4.5,
-    "description": "Chocolate egg with a creamy filling and a fun surprise toy inside, loved by kids.",
+    "name": "Table White Eggs",
+    "category": "Dairy",
+    "brand": "Table White",
+    "price": 110,
+    "mrp": 145,
+    "rating": 4.21,
+    "unit": "10 pcs",
+    "stock": 4,
+    "description": "Table White Eggs from Table White (10 pcs) — a top-rated dairy product on Blinkit with a 4.21/5 customer rating.",
     "reviews": [
-      "Kids absolutely love the surprise toy.",
-      "Good quality chocolate and creamy filling."
+      "Delivered quickly and in perfect condition.",
+      "Perfect for daily use, great product."
     ],
-    "image_url": "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "What age is it suitable for?", "a": "Suitable for children above 3 years; small toy parts require supervision."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P013", "P006"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P015",
-    "name": "Tata Salt 1kg",
-    "category": "Grocery",
-    "brand": "Tata",
-    "price": 25,
-    "rating": 4.6,
-    "description": "Iodized vacuum-evaporated salt, India's most trusted salt brand for everyday cooking.",
+    "name": "Amul Gold Milk",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 83,
+    "mrp": 83,
+    "rating": 4.7,
+    "unit": "1 ltr",
+    "stock": 30,
+    "description": "Amul Gold Milk from Amul (1 ltr) — a top-rated dairy product on Blinkit with a 4.7/5 customer rating.",
     "reviews": [
-      "Pure and free flowing, trusted brand.",
-      "Good quality, no lumps."
+      "Really good quality, exactly what I expected.",
+      "Consistent taste and always fresh on delivery."
     ],
-    "image_url": "https://images.unsplash.com/photo-1559477882-f1a7c5931735?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Is it iodized?", "a": "Yes, it is fortified with iodine."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P016", "P017"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P016",
-    "name": "Fortune Sunflower Oil 1L",
-    "category": "Grocery",
-    "brand": "Fortune",
-    "price": 145,
-    "rating": 4.3,
-    "description": "Refined sunflower oil that is light and healthy, ideal for everyday cooking and frying.",
+    "name": "Amul Lactose Free Milk",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 26,
+    "mrp": 26,
+    "rating": 4.71,
+    "unit": "250 ml",
+    "stock": 30,
+    "description": "Amul Lactose Free Milk from Amul (250 ml) — a top-rated dairy product on Blinkit with a 4.71/5 customer rating.",
     "reviews": [
-      "Light on stomach, good for daily cooking.",
-      "No strong smell, great for frying."
+      "Great value for money at this price point.",
+      "My family uses this brand regularly, always reliable."
     ],
-    "image_url": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400",
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
     "faqs": [
-      {"q": "Is it cholesterol free?", "a": "Yes, it contains zero cholesterol."}
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
     ],
-    "related_products": ["P015", "P017"]
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   },
   {
     "id": "P017",
-    "name": "India Gate Basmati Rice 1kg",
-    "category": "Grocery",
-    "brand": "India Gate",
-    "price": 120,
-    "rating": 4.5,
-    "description": "Premium long-grain basmati rice, aged for a rich aroma and fluffy texture when cooked.",
+    "name": "Yakult Probiotic Drink",
+    "category": "Beverages",
+    "brand": "Yakult",
+    "price": 90,
+    "mrp": 90,
+    "rating": 4.75,
+    "unit": "5 x 65 ml",
+    "stock": 4,
+    "description": "Yakult Probiotic Drink from Yakult (5 x 65 ml) — a top-rated beverages product on Blinkit with a 4.75/5 customer rating.",
     "reviews": [
-      "Long grains and great aroma.",
-      "Perfect for biryani and pulao."
+      "A staple in our kitchen, never disappoints.",
+      "Taste and quality are both excellent."
     ],
-    "image_url": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
     "faqs": [
-      {"q": "Is it aged rice?", "a": "Yes, it is aged for enhanced aroma and texture."}
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
     ],
-    "related_products": ["P015", "P016"]
+    "related_products": [
+      "P018",
+      "P019",
+      "P020"
+    ]
   },
   {
     "id": "P018",
-    "name": "Nescafe Classic Instant Coffee 50g",
+    "name": "Yakult Light Probiotic Drink",
     "category": "Beverages",
-    "brand": "Nescafe",
-    "price": 180,
-    "rating": 4.4,
-    "description": "Rich and aromatic instant coffee granules made from the finest coffee beans.",
+    "brand": "Yakult",
+    "price": 100,
+    "mrp": 100,
+    "rating": 4.68,
+    "unit": "5 x 65 ml",
+    "stock": 3,
+    "description": "Yakult Light Probiotic Drink from Yakult (5 x 65 ml) — a top-rated beverages product on Blinkit with a 4.68/5 customer rating.",
     "reviews": [
-      "Strong aroma and rich taste.",
-      "Perfect for a quick morning coffee."
+      "My family uses this brand regularly, always reliable.",
+      "Delivered quickly and in perfect condition."
     ],
-    "image_url": "https://images.unsplash.com/photo-1610632380989-680fe40816c6?w=400",
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
     "faqs": [
-      {"q": "Is it decaf?", "a": "No, this is regular caffeinated instant coffee."}
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
     ],
-    "related_products": ["P008", "P009"]
+    "related_products": [
+      "P017",
+      "P019",
+      "P020"
+    ]
   },
   {
     "id": "P019",
-    "name": "Haldiram's Aloo Bhujia",
-    "category": "Snacks",
-    "brand": "Haldiram's",
-    "price": 55,
-    "rating": 4.5,
-    "description": "Crispy and spicy potato and gram flour namkeen, a popular Indian tea-time snack.",
+    "name": "Nestle Milo RTD Malt Drink with Millets - Pack of 2",
+    "category": "Beverages",
+    "brand": "Nestle Milo",
+    "price": 81,
+    "mrp": 90,
+    "rating": 4.47,
+    "unit": "2 x 180 ml",
+    "stock": 3,
+    "description": "Nestle Milo RTD Malt Drink with Millets - Pack of 2 from Nestle Milo (2 x 180 ml) — a top-rated beverages product on Blinkit with a 4.47/5 customer rating.",
     "reviews": [
-      "Very crispy and flavorful.",
-      "Great with evening tea."
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
     ],
-    "image_url": "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400",
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
     "faqs": [
-      {"q": "How long does it stay fresh after opening?", "a": "Best consumed within a week of opening if sealed properly."}
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
     ],
-    "related_products": ["P006", "P007"]
+    "related_products": [
+      "P017",
+      "P018",
+      "P020"
+    ]
   },
   {
     "id": "P020",
-    "name": "Mother Dairy Paneer 200g",
-    "category": "Dairy",
-    "brand": "Mother Dairy",
-    "price": 90,
-    "rating": 4.5,
-    "description": "Fresh and soft cottage cheese made from pure milk, perfect for curries and snacks.",
+    "name": "Sofit Chocolate Flavoured Soy Beverage",
+    "category": "Beverages",
+    "brand": "Sofit",
+    "price": 145,
+    "mrp": 155,
+    "rating": 4.37,
+    "unit": "1 ltr",
+    "stock": 2,
+    "description": "Sofit Chocolate Flavoured Soy Beverage from Sofit (1 ltr) — a top-rated beverages product on Blinkit with a 4.37/5 customer rating.",
     "reviews": [
-      "Very soft and fresh texture.",
-      "Great for making paneer tikka and curries."
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
     ],
-    "image_url": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400",
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
     "faqs": [
-      {"q": "How long can it be refrigerated?", "a": "Best consumed within 3-4 days when refrigerated."}
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
     ],
-    "related_products": ["P001", "P002"]
+    "related_products": [
+      "P017",
+      "P018",
+      "P019"
+    ]
+  },
+  {
+    "id": "P021",
+    "name": "Sofit Chocolate Soy Beverage",
+    "category": "Beverages",
+    "brand": "Sofit",
+    "price": 37,
+    "mrp": 40,
+    "rating": 4.55,
+    "unit": "180 ml",
+    "stock": 3,
+    "description": "Sofit Chocolate Soy Beverage from Sofit (180 ml) — a top-rated beverages product on Blinkit with a 4.55/5 customer rating.",
+    "reviews": [
+      "My family uses this brand regularly, always reliable.",
+      "Delivered quickly and in perfect condition."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
+    "faqs": [
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
+    ],
+    "related_products": [
+      "P017",
+      "P018",
+      "P019"
+    ]
+  },
+  {
+    "id": "P022",
+    "name": "Alt Co Oat Beverage Drink",
+    "category": "Beverages",
+    "brand": "Alt Co",
+    "price": 240,
+    "mrp": 266,
+    "rating": 3.94,
+    "unit": "1 ltr",
+    "stock": 4,
+    "description": "Alt Co Oat Beverage Drink from Alt Co (1 ltr) — a top-rated beverages product on Blinkit with a 3.94/5 customer rating.",
+    "reviews": [
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
+    "faqs": [
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
+    ],
+    "related_products": [
+      "P017",
+      "P018",
+      "P019"
+    ]
+  },
+  {
+    "id": "P023",
+    "name": "Only Earth Unsweetened Coconut Drink",
+    "category": "Beverages",
+    "brand": "Only Earth",
+    "price": 264,
+    "mrp": 299,
+    "rating": 4.21,
+    "unit": "1 ltr",
+    "stock": 2,
+    "description": "Only Earth Unsweetened Coconut Drink from Only Earth (1 ltr) — a top-rated beverages product on Blinkit with a 4.21/5 customer rating.",
+    "reviews": [
+      "Top-notch quality, will order again.",
+      "Exactly as described, very satisfied."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
+    "faqs": [
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
+    ],
+    "related_products": [
+      "P017",
+      "P018",
+      "P019"
+    ]
+  },
+  {
+    "id": "P024",
+    "name": "Yoga Bar Almond Beverage Drink",
+    "category": "Beverages",
+    "brand": "Yoga Bar",
+    "price": 240,
+    "mrp": 299,
+    "rating": 2.84,
+    "unit": "1 ltr",
+    "stock": 1,
+    "description": "Yoga Bar Almond Beverage Drink from Yoga Bar (1 ltr) — a top-rated beverages product on Blinkit with a 2.84/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
+    "faqs": [
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
+    ],
+    "related_products": [
+      "P017",
+      "P018",
+      "P019"
+    ]
+  },
+  {
+    "id": "P025",
+    "name": "Fidelo Almond Drink (Unsweetened)",
+    "category": "Beverages",
+    "brand": "Fidelo",
+    "price": 239,
+    "mrp": 355,
+    "rating": 3.47,
+    "unit": "1 ltr",
+    "stock": 1,
+    "description": "Fidelo Almond Drink (Unsweetened) from Fidelo (1 ltr) — a top-rated beverages product on Blinkit with a 3.47/5 customer rating.",
+    "reviews": [
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
+    "faqs": [
+      {
+        "q": "Is this drink carbonated?",
+        "a": "Some beverages are carbonated, others still. Refer to the product description."
+      },
+      {
+        "q": "Does it contain added sugar?",
+        "a": "Check the nutrition panel on the pack for sugar content details."
+      }
+    ],
+    "related_products": [
+      "P017",
+      "P018",
+      "P019"
+    ]
+  },
+  {
+    "id": "P026",
+    "name": "The Health Factory Zero Maida Whole Wheat Bread",
+    "category": "Bakery",
+    "brand": "The Health Factory",
+    "price": 65,
+    "mrp": 65,
+    "rating": 4.4,
+    "unit": "350 g",
+    "stock": 1,
+    "description": "The Health Factory Zero Maida Whole Wheat Bread from The Health Factory (350 g) — a top-rated bakery product on Blinkit with a 4.4/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P027",
+      "P028",
+      "P029"
+    ]
+  },
+  {
+    "id": "P027",
+    "name": "English Oven Premium White Bread 350 g",
+    "category": "Bakery",
+    "brand": "English Oven",
+    "price": 50,
+    "mrp": 50,
+    "rating": 4.54,
+    "unit": "350 g",
+    "stock": 1,
+    "description": "English Oven Premium White Bread 350 g from English Oven (350 g) — a top-rated bakery product on Blinkit with a 4.54/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P028",
+      "P029"
+    ]
+  },
+  {
+    "id": "P028",
+    "name": "Modern 100% Whole Wheat Bread (Zero Maida)",
+    "category": "Bakery",
+    "brand": "Modern",
+    "price": 65,
+    "mrp": 65,
+    "rating": 4.55,
+    "unit": "400 g",
+    "stock": 6,
+    "description": "Modern 100% Whole Wheat Bread (Zero Maida) from Modern (400 g) — a top-rated bakery product on Blinkit with a 4.55/5 customer rating.",
+    "reviews": [
+      "Trusted brand, always my first choice.",
+      "Compared to alternatives, this is the best."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P029"
+    ]
+  },
+  {
+    "id": "P029",
+    "name": "English Oven Brown Bread",
+    "category": "Bakery",
+    "brand": "English Oven",
+    "price": 65,
+    "mrp": 65,
+    "rating": 4.56,
+    "unit": "400 g",
+    "stock": 4,
+    "description": "English Oven Brown Bread from English Oven (400 g) — a top-rated bakery product on Blinkit with a 4.56/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P030",
+    "name": "Britannia 100% Whole Wheat Bread (No Maida)",
+    "category": "Bakery",
+    "brand": "Britannia",
+    "price": 65,
+    "mrp": 65,
+    "rating": 4.52,
+    "unit": "400 g",
+    "stock": 7,
+    "description": "Britannia 100% Whole Wheat Bread (No Maida) from Britannia (400 g) — a top-rated bakery product on Blinkit with a 4.52/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P031",
+    "name": "English Oven Zero Maida Multigrain Bread",
+    "category": "Bakery",
+    "brand": "English Oven",
+    "price": 70,
+    "mrp": 70,
+    "rating": 4.56,
+    "unit": "400 g",
+    "stock": 3,
+    "description": "English Oven Zero Maida Multigrain Bread from English Oven (400 g) — a top-rated bakery product on Blinkit with a 4.56/5 customer rating.",
+    "reviews": [
+      "My family uses this brand regularly, always reliable.",
+      "Delivered quickly and in perfect condition."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P032",
+    "name": "Modern White Bread",
+    "category": "Bakery",
+    "brand": "Modern",
+    "price": 60,
+    "mrp": 60,
+    "rating": 4.46,
+    "unit": "400 g",
+    "stock": 1,
+    "description": "Modern White Bread from Modern (400 g) — a top-rated bakery product on Blinkit with a 4.46/5 customer rating.",
+    "reviews": [
+      "My family uses this brand regularly, always reliable.",
+      "Delivered quickly and in perfect condition."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P033",
+    "name": "English Oven Sandwich White Bread",
+    "category": "Bakery",
+    "brand": "English Oven",
+    "price": 60,
+    "mrp": 60,
+    "rating": 4.43,
+    "unit": "400 g",
+    "stock": 5,
+    "description": "English Oven Sandwich White Bread from English Oven (400 g) — a top-rated bakery product on Blinkit with a 4.43/5 customer rating.",
+    "reviews": [
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P034",
+    "name": "The Health Factory Zero Maida Multigrain Bread",
+    "category": "Bakery",
+    "brand": "The Health Factory",
+    "price": 70,
+    "mrp": 70,
+    "rating": 4.39,
+    "unit": "250 g",
+    "stock": 2,
+    "description": "The Health Factory Zero Maida Multigrain Bread from The Health Factory (250 g) — a top-rated bakery product on Blinkit with a 4.39/5 customer rating.",
+    "reviews": [
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P035",
+    "name": "Modern Multigrain Bread",
+    "category": "Bakery",
+    "brand": "Modern",
+    "price": 70,
+    "mrp": 70,
+    "rating": 4.54,
+    "unit": "400 g",
+    "stock": 4,
+    "description": "Modern Multigrain Bread from Modern (400 g) — a top-rated bakery product on Blinkit with a 4.54/5 customer rating.",
+    "reviews": [
+      "Consistent taste and always fresh on delivery.",
+      "Great value for money at this price point."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P036",
+    "name": "English Oven Zero Maida Whole Wheat Bread",
+    "category": "Bakery",
+    "brand": "English Oven",
+    "price": 65,
+    "mrp": 65,
+    "rating": 4.44,
+    "unit": "400 g",
+    "stock": 4,
+    "description": "English Oven Zero Maida Whole Wheat Bread from English Oven (400 g) — a top-rated bakery product on Blinkit with a 4.44/5 customer rating.",
+    "reviews": [
+      "Trusted brand, always my first choice.",
+      "Compared to alternatives, this is the best."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P037",
+    "name": "Modern Fruit Bread",
+    "category": "Bakery",
+    "brand": "Modern",
+    "price": 30,
+    "mrp": 30,
+    "rating": 4.45,
+    "unit": "200 g",
+    "stock": 1,
+    "description": "Modern Fruit Bread from Modern (200 g) — a top-rated bakery product on Blinkit with a 4.45/5 customer rating.",
+    "reviews": [
+      "My family uses this brand regularly, always reliable.",
+      "Delivered quickly and in perfect condition."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P038",
+    "name": "Modern Sandwich White Bread",
+    "category": "Bakery",
+    "brand": "Modern",
+    "price": 95,
+    "mrp": 95,
+    "rating": 4.46,
+    "unit": "800 g",
+    "stock": 3,
+    "description": "Modern Sandwich White Bread from Modern (800 g) — a top-rated bakery product on Blinkit with a 4.46/5 customer rating.",
+    "reviews": [
+      "My family uses this brand regularly, always reliable.",
+      "Delivered quickly and in perfect condition."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P039",
+    "name": "Protein Chef 42g Protein Multigrain Bread - 5 Superfoods",
+    "category": "Bakery",
+    "brand": "Protein Chef",
+    "price": 69,
+    "mrp": 75,
+    "rating": 4.26,
+    "unit": "270 g",
+    "stock": 3,
+    "description": "Protein Chef 42g Protein Multigrain Bread - 5 Superfoods from Protein Chef (270 g) — a top-rated bakery product on Blinkit with a 4.26/5 customer rating.",
+    "reviews": [
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P040",
+    "name": "Protein Chef Multigrain Double Protein Bread (64g Protein per Loaf)",
+    "category": "Bakery",
+    "brand": "Protein Chef",
+    "price": 99,
+    "mrp": 99,
+    "rating": 4.26,
+    "unit": "270 g",
+    "stock": 2,
+    "description": "Protein Chef Multigrain Double Protein Bread (64g Protein per Loaf) from Protein Chef (270 g) — a top-rated bakery product on Blinkit with a 4.26/5 customer rating.",
+    "reviews": [
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P041",
+    "name": "Britannia Multigrain Bread",
+    "category": "Bakery",
+    "brand": "Britannia",
+    "price": 59,
+    "mrp": 70,
+    "rating": 4.31,
+    "unit": "400 g",
+    "stock": 2,
+    "description": "Britannia Multigrain Bread from Britannia (400 g) — a top-rated bakery product on Blinkit with a 4.31/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    "faqs": [
+      {
+        "q": "Does it contain maida (refined flour)?",
+        "a": "Varies by product — whole wheat variants are explicitly labelled; check the ingredients list."
+      },
+      {
+        "q": "What is the shelf life?",
+        "a": "Best consumed within 3-5 days when stored in a cool, dry place. Refrigerate to extend freshness."
+      }
+    ],
+    "related_products": [
+      "P026",
+      "P027",
+      "P028"
+    ]
+  },
+  {
+    "id": "P042",
+    "name": "So Good Unsweetened Plant Based Oat Beverage",
+    "category": "Instant Food",
+    "brand": "So Good",
+    "price": 235,
+    "mrp": 267,
+    "rating": 4.16,
+    "unit": "1 ltr",
+    "stock": 2,
+    "description": "So Good Unsweetened Plant Based Oat Beverage from So Good (1 ltr) — a top-rated instant food product on Blinkit with a 4.16/5 customer rating.",
+    "reviews": [
+      "Taste and quality are both excellent.",
+      "Good portion size and arrives fresh."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P043",
+      "P044",
+      "P045"
+    ]
+  },
+  {
+    "id": "P043",
+    "name": "Only Earth Unsweetened Plant Based Oat Beverage - Pack of 2",
+    "category": "Instant Food",
+    "brand": "Only Earth",
+    "price": 523,
+    "mrp": 598,
+    "rating": 4.29,
+    "unit": "2 x 1 ltr",
+    "stock": 1,
+    "description": "Only Earth Unsweetened Plant Based Oat Beverage - Pack of 2 from Only Earth (2 x 1 ltr) — a top-rated instant food product on Blinkit with a 4.29/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P042",
+      "P044",
+      "P045"
+    ]
+  },
+  {
+    "id": "P044",
+    "name": "Alt Co Oat Beverage",
+    "category": "Instant Food",
+    "brand": "Alt Co",
+    "price": 66,
+    "mrp": 69,
+    "rating": 4.3,
+    "unit": "180 ml",
+    "stock": 2,
+    "description": "Alt Co Oat Beverage from Alt Co (180 ml) — a top-rated instant food product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Taste and quality are both excellent.",
+      "Good portion size and arrives fresh."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P042",
+      "P043",
+      "P045"
+    ]
+  },
+  {
+    "id": "P045",
+    "name": "Dancing Cow Plant Based Oat Beverage",
+    "category": "Instant Food",
+    "brand": "Dancing Cow",
+    "price": 235,
+    "mrp": 266,
+    "rating": 4.26,
+    "unit": "1 ltr",
+    "stock": 8,
+    "description": "Dancing Cow Plant Based Oat Beverage from Dancing Cow (1 ltr) — a top-rated instant food product on Blinkit with a 4.26/5 customer rating.",
+    "reviews": [
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P042",
+      "P043",
+      "P044"
+    ]
+  },
+  {
+    "id": "P046",
+    "name": "So Good Caramel Oat Beverage",
+    "category": "Instant Food",
+    "brand": "So Good",
+    "price": 246,
+    "mrp": 267,
+    "rating": 3.89,
+    "unit": "1 ltr",
+    "stock": 2,
+    "description": "So Good Caramel Oat Beverage from So Good (1 ltr) — a top-rated instant food product on Blinkit with a 3.89/5 customer rating.",
+    "reviews": [
+      "Taste and quality are both excellent.",
+      "Good portion size and arrives fresh."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P042",
+      "P043",
+      "P044"
+    ]
+  },
+  {
+    "id": "P047",
+    "name": "Only Earth Vanilla Shake Oat Beverage",
+    "category": "Instant Food",
+    "brand": "Only Earth",
+    "price": 43,
+    "mrp": 45,
+    "rating": 4.45,
+    "unit": "165 ml",
+    "stock": 4,
+    "description": "Only Earth Vanilla Shake Oat Beverage from Only Earth (165 ml) — a top-rated instant food product on Blinkit with a 4.45/5 customer rating.",
+    "reviews": [
+      "Fresh and well-packaged, happy with the purchase.",
+      "A staple in our kitchen, never disappoints."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P042",
+      "P043",
+      "P044"
+    ]
+  },
+  {
+    "id": "P048",
+    "name": "Only Earth Strawberry Shake Oat Beverage",
+    "category": "Instant Food",
+    "brand": "Only Earth",
+    "price": 43,
+    "mrp": 45,
+    "rating": 4.46,
+    "unit": "165 ml",
+    "stock": 2,
+    "description": "Only Earth Strawberry Shake Oat Beverage from Only Earth (165 ml) — a top-rated instant food product on Blinkit with a 4.46/5 customer rating.",
+    "reviews": [
+      "Trusted brand, always my first choice.",
+      "Compared to alternatives, this is the best."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P042",
+      "P043",
+      "P044"
+    ]
+  },
+  {
+    "id": "P049",
+    "name": "Yoga Bar Unsweetened Oat Beverage",
+    "category": "Instant Food",
+    "brand": "Yoga Bar",
+    "price": 237,
+    "mrp": 275,
+    "rating": 4.19,
+    "unit": "1 ltr",
+    "stock": 2,
+    "description": "Yoga Bar Unsweetened Oat Beverage from Yoga Bar (1 ltr) — a top-rated instant food product on Blinkit with a 4.19/5 customer rating.",
+    "reviews": [
+      "My family uses this brand regularly, always reliable.",
+      "Delivered quickly and in perfect condition."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P042",
+      "P043",
+      "P044"
+    ]
+  },
+  {
+    "id": "P050",
+    "name": "So Good Barista Edition Oat Beverage",
+    "category": "Instant Food",
+    "brand": "So Good",
+    "price": 232,
+    "mrp": 289,
+    "rating": 3.02,
+    "unit": "1 ltr",
+    "stock": 1,
+    "description": "So Good Barista Edition Oat Beverage from So Good (1 ltr) — a top-rated instant food product on Blinkit with a 3.02/5 customer rating.",
+    "reviews": [
+      "Taste and quality are both excellent.",
+      "Good portion size and arrives fresh."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    "faqs": [
+      {
+        "q": "Is it spicy?",
+        "a": "Spice level varies by variant; most have a mild to medium heat level suitable for all ages."
+      },
+      {
+        "q": "How long does it take to prepare?",
+        "a": "Most instant foods are ready in 2-5 minutes. Follow the pack instructions."
+      }
+    ],
+    "related_products": [
+      "P042",
+      "P043",
+      "P044"
+    ]
+  },
+  {
+    "id": "P051",
+    "name": "The Baker’s Dozen Whole Wheat Banana Cake",
+    "category": "Fruits",
+    "brand": "The Baker's Dozen",
+    "price": 175,
+    "mrp": 175,
+    "rating": 4.39,
+    "unit": "150 g",
+    "stock": 1,
+    "description": "The Baker’s Dozen Whole Wheat Banana Cake from The Baker's Dozen (150 g) — a top-rated fruits product on Blinkit with a 4.39/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {
+        "q": "Is this product organic?",
+        "a": "These are farm-fresh produce; organic certification depends on the specific batch."
+      },
+      {
+        "q": "How should I store them?",
+        "a": "Store at room temperature and refrigerate after ripening for longer freshness."
+      }
+    ],
+    "related_products": [
+      "P052",
+      "P053",
+      "P054"
+    ]
+  },
+  {
+    "id": "P052",
+    "name": "Awsum Better Bakes Banana Bread",
+    "category": "Fruits",
+    "brand": "Awsum",
+    "price": 105,
+    "mrp": 150,
+    "rating": 4.08,
+    "unit": "150 g",
+    "stock": 2,
+    "description": "Awsum Better Bakes Banana Bread from Awsum (150 g) — a top-rated fruits product on Blinkit with a 4.08/5 customer rating.",
+    "reviews": [
+      "Exactly as described, very satisfied.",
+      "Fresh and well-packaged, happy with the purchase."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {
+        "q": "Is this product organic?",
+        "a": "These are farm-fresh produce; organic certification depends on the specific batch."
+      },
+      {
+        "q": "How should I store them?",
+        "a": "Store at room temperature and refrigerate after ripening for longer freshness."
+      }
+    ],
+    "related_products": [
+      "P051",
+      "P053",
+      "P054"
+    ]
+  },
+  {
+    "id": "P053",
+    "name": "Orange Carrot (Gajar)",
+    "category": "Fruits",
+    "brand": "",
+    "price": 38,
+    "mrp": 44,
+    "rating": 4.3,
+    "unit": "500 g",
+    "stock": 20,
+    "description": "Orange Carrot (Gajar) from  (500 g) — a top-rated fruits product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Really good quality, exactly what I expected.",
+      "Consistent taste and always fresh on delivery."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {
+        "q": "Is this product organic?",
+        "a": "These are farm-fresh produce; organic certification depends on the specific batch."
+      },
+      {
+        "q": "How should I store them?",
+        "a": "Store at room temperature and refrigerate after ripening for longer freshness."
+      }
+    ],
+    "related_products": [
+      "P051",
+      "P052",
+      "P054"
+    ]
+  },
+  {
+    "id": "P054",
+    "name": "Raw Banana (Kacha Kela)",
+    "category": "Fruits",
+    "brand": "",
+    "price": 47,
+    "mrp": 61,
+    "rating": 4.3,
+    "unit": "3 pcs",
+    "stock": 5,
+    "description": "Raw Banana (Kacha Kela) from  (3 pcs) — a top-rated fruits product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Smooth texture and premium feel.",
+      "Really good quality, exactly what I expected."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {
+        "q": "Is this product organic?",
+        "a": "These are farm-fresh produce; organic certification depends on the specific batch."
+      },
+      {
+        "q": "How should I store them?",
+        "a": "Store at room temperature and refrigerate after ripening for longer freshness."
+      }
+    ],
+    "related_products": [
+      "P051",
+      "P052",
+      "P053"
+    ]
+  },
+  {
+    "id": "P055",
+    "name": "Raw Papaya (Kacha Papita)",
+    "category": "Fruits",
+    "brand": "",
+    "price": 35,
+    "mrp": 45,
+    "rating": 4.3,
+    "unit": "400 g",
+    "stock": 1,
+    "description": "Raw Papaya (Kacha Papita) from  (400 g) — a top-rated fruits product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Delivered quickly and in perfect condition.",
+      "Perfect for daily use, great product."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {
+        "q": "Is this product organic?",
+        "a": "These are farm-fresh produce; organic certification depends on the specific batch."
+      },
+      {
+        "q": "How should I store them?",
+        "a": "Store at room temperature and refrigerate after ripening for longer freshness."
+      }
+    ],
+    "related_products": [
+      "P051",
+      "P052",
+      "P053"
+    ]
+  },
+  {
+    "id": "P056",
+    "name": "Banana Stem",
+    "category": "Fruits",
+    "brand": "",
+    "price": 16,
+    "mrp": 19,
+    "rating": 4.3,
+    "unit": "800 g",
+    "stock": 2,
+    "description": "Banana Stem from  (800 g) — a top-rated fruits product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Great value for money at this price point.",
+      "My family uses this brand regularly, always reliable."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {
+        "q": "Is this product organic?",
+        "a": "These are farm-fresh produce; organic certification depends on the specific batch."
+      },
+      {
+        "q": "How should I store them?",
+        "a": "Store at room temperature and refrigerate after ripening for longer freshness."
+      }
+    ],
+    "related_products": [
+      "P051",
+      "P052",
+      "P053"
+    ]
+  },
+  {
+    "id": "P057",
+    "name": "Yellaki Banana",
+    "category": "Fruits",
+    "brand": "",
+    "price": 71,
+    "mrp": 86,
+    "rating": 4.3,
+    "unit": "500 g",
+    "stock": 29,
+    "description": "Yellaki Banana from  (500 g) — a top-rated fruits product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {
+        "q": "Is this product organic?",
+        "a": "These are farm-fresh produce; organic certification depends on the specific batch."
+      },
+      {
+        "q": "How should I store them?",
+        "a": "Store at room temperature and refrigerate after ripening for longer freshness."
+      }
+    ],
+    "related_products": [
+      "P051",
+      "P052",
+      "P053"
+    ]
+  },
+  {
+    "id": "P058",
+    "name": "Red Banana",
+    "category": "Fruits",
+    "brand": "",
+    "price": 67,
+    "mrp": 83,
+    "rating": 4.3,
+    "unit": "500 g",
+    "stock": 5,
+    "description": "Red Banana from  (500 g) — a top-rated fruits product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Top-notch quality, will order again.",
+      "Exactly as described, very satisfied."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    "faqs": [
+      {
+        "q": "Is this product organic?",
+        "a": "These are farm-fresh produce; organic certification depends on the specific batch."
+      },
+      {
+        "q": "How should I store them?",
+        "a": "Store at room temperature and refrigerate after ripening for longer freshness."
+      }
+    ],
+    "related_products": [
+      "P051",
+      "P052",
+      "P053"
+    ]
+  },
+  {
+    "id": "P059",
+    "name": "Sofit Natural Soy Beverage (Sugar Free, Vegan)",
+    "category": "Grocery",
+    "brand": "Sofit",
+    "price": 145,
+    "mrp": 155,
+    "rating": 4.38,
+    "unit": "1 ltr",
+    "stock": 11,
+    "description": "Sofit Natural Soy Beverage (Sugar Free, Vegan) from Sofit (1 ltr) — a top-rated grocery product on Blinkit with a 4.38/5 customer rating.",
+    "reviews": [
+      "Consistent taste and always fresh on delivery.",
+      "Great value for money at this price point."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "faqs": [
+      {
+        "q": "What is the best-before period?",
+        "a": "Dry groceries typically have a 6-12 month shelf life. Check the pack for the exact date."
+      },
+      {
+        "q": "Is it suitable for daily cooking?",
+        "a": "Yes, these are everyday grocery staples from trusted brands."
+      }
+    ],
+    "related_products": [
+      "P060",
+      "P061",
+      "P062"
+    ]
+  },
+  {
+    "id": "P060",
+    "name": "Cabbage (Patta Gobhi)",
+    "category": "Grocery",
+    "brand": "",
+    "price": 24,
+    "mrp": 29,
+    "rating": 4.3,
+    "unit": "400 g",
+    "stock": 4,
+    "description": "Cabbage (Patta Gobhi) from  (400 g) — a top-rated grocery product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Perfect for daily use, great product.",
+      "Top-notch quality, will order again."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "faqs": [
+      {
+        "q": "What is the best-before period?",
+        "a": "Dry groceries typically have a 6-12 month shelf life. Check the pack for the exact date."
+      },
+      {
+        "q": "Is it suitable for daily cooking?",
+        "a": "Yes, these are everyday grocery staples from trusted brands."
+      }
+    ],
+    "related_products": [
+      "P059",
+      "P061",
+      "P062"
+    ]
+  },
+  {
+    "id": "P061",
+    "name": "Curry Leaves (Kadi Patta)",
+    "category": "Grocery",
+    "brand": "",
+    "price": 8,
+    "mrp": 9,
+    "rating": 4.3,
+    "unit": "50 g",
+    "stock": 8,
+    "description": "Curry Leaves (Kadi Patta) from  (50 g) — a top-rated grocery product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Trusted brand, always my first choice.",
+      "Compared to alternatives, this is the best."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "faqs": [
+      {
+        "q": "What is the best-before period?",
+        "a": "Dry groceries typically have a 6-12 month shelf life. Check the pack for the exact date."
+      },
+      {
+        "q": "Is it suitable for daily cooking?",
+        "a": "Yes, these are everyday grocery staples from trusted brands."
+      }
+    ],
+    "related_products": [
+      "P059",
+      "P060",
+      "P062"
+    ]
+  },
+  {
+    "id": "P062",
+    "name": "Organically Grown Coriander (without Roots) (Dhaniya Patta)",
+    "category": "Grocery",
+    "brand": "Siya Fruits And Vegetables",
+    "price": 35,
+    "mrp": 41,
+    "rating": 4.3,
+    "unit": "100 g",
+    "stock": 7,
+    "description": "Organically Grown Coriander (without Roots) (Dhaniya Patta) from Siya Fruits And Vegetables (100 g) — a top-rated grocery product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "faqs": [
+      {
+        "q": "What is the best-before period?",
+        "a": "Dry groceries typically have a 6-12 month shelf life. Check the pack for the exact date."
+      },
+      {
+        "q": "Is it suitable for daily cooking?",
+        "a": "Yes, these are everyday grocery staples from trusted brands."
+      }
+    ],
+    "related_products": [
+      "P059",
+      "P060",
+      "P061"
+    ]
+  },
+  {
+    "id": "P063",
+    "name": "Organically Grown Cabbage (Patta Gobhi)",
+    "category": "Grocery",
+    "brand": "Shatayushi Farms",
+    "price": 47,
+    "mrp": 56,
+    "rating": 4.3,
+    "unit": "400 g",
+    "stock": 1,
+    "description": "Organically Grown Cabbage (Patta Gobhi) from Shatayushi Farms (400 g) — a top-rated grocery product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Taste and quality are both excellent.",
+      "Good portion size and arrives fresh."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "faqs": [
+      {
+        "q": "What is the best-before period?",
+        "a": "Dry groceries typically have a 6-12 month shelf life. Check the pack for the exact date."
+      },
+      {
+        "q": "Is it suitable for daily cooking?",
+        "a": "Yes, these are everyday grocery staples from trusted brands."
+      }
+    ],
+    "related_products": [
+      "P059",
+      "P060",
+      "P061"
+    ]
+  },
+  {
+    "id": "P064",
+    "name": "Dill Leaves (Shepu) (Soya)",
+    "category": "Grocery",
+    "brand": "",
+    "price": 13,
+    "mrp": 16,
+    "rating": 4.3,
+    "unit": "100 g",
+    "stock": 1,
+    "description": "Dill Leaves (Shepu) (Soya) from  (100 g) — a top-rated grocery product on Blinkit with a 4.3/5 customer rating.",
+    "reviews": [
+      "Exactly as described, very satisfied.",
+      "Fresh and well-packaged, happy with the purchase."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "faqs": [
+      {
+        "q": "What is the best-before period?",
+        "a": "Dry groceries typically have a 6-12 month shelf life. Check the pack for the exact date."
+      },
+      {
+        "q": "Is it suitable for daily cooking?",
+        "a": "Yes, these are everyday grocery staples from trusted brands."
+      }
+    ],
+    "related_products": [
+      "P059",
+      "P060",
+      "P061"
+    ]
+  },
+  {
+    "id": "P065",
+    "name": "Safal Frozen Green Peas",
+    "category": "Dairy",
+    "brand": "Safal",
+    "price": 116,
+    "mrp": 135,
+    "rating": 4.69,
+    "unit": "500 g",
+    "stock": 14,
+    "description": "Safal Frozen Green Peas from Safal (500 g) — a top-rated dairy product on Blinkit with a 4.69/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P066",
+    "name": "Table White Eggs (6 pcs)",
+    "category": "Dairy",
+    "brand": "Table White",
+    "price": 66,
+    "mrp": 85,
+    "rating": 4.19,
+    "unit": "6 pcs",
+    "stock": 2,
+    "description": "Table White Eggs (6 pcs) from Table White (6 pcs) — a top-rated dairy product on Blinkit with a 4.19/5 customer rating.",
+    "reviews": [
+      "Consistent taste and always fresh on delivery.",
+      "Great value for money at this price point."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P067",
+    "name": "Table White Eggs",
+    "category": "Dairy",
+    "brand": "Table White",
+    "price": 307,
+    "mrp": 350,
+    "rating": 3.42,
+    "unit": "30 pcs",
+    "stock": 2,
+    "description": "Table White Eggs from Table White (30 pcs) — a top-rated dairy product on Blinkit with a 3.42/5 customer rating.",
+    "reviews": [
+      "Delivered quickly and in perfect condition.",
+      "Perfect for daily use, great product."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P068",
+    "name": "Heritage Total Pouch Curd",
+    "category": "Dairy",
+    "brand": "Heritage",
+    "price": 35,
+    "mrp": 38,
+    "rating": 4.69,
+    "unit": "500 g",
+    "stock": 12,
+    "description": "Heritage Total Pouch Curd from Heritage (500 g) — a top-rated dairy product on Blinkit with a 4.69/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P069",
+    "name": "Gowardhan Classic Block Paneer",
+    "category": "Dairy",
+    "brand": "Gowardhan",
+    "price": 85,
+    "mrp": 130,
+    "rating": 4.51,
+    "unit": "200 g",
+    "stock": 28,
+    "description": "Gowardhan Classic Block Paneer from Gowardhan (200 g) — a top-rated dairy product on Blinkit with a 4.51/5 customer rating.",
+    "reviews": [
+      "A staple in our kitchen, never disappoints.",
+      "Taste and quality are both excellent."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P070",
+    "name": "Whole Farm Premium Red Chilli Whole",
+    "category": "Dairy",
+    "brand": "Whole Farm",
+    "price": 48,
+    "mrp": 75,
+    "rating": 4.66,
+    "unit": "100 g",
+    "stock": 1,
+    "description": "Whole Farm Premium Red Chilli Whole from Whole Farm (100 g) — a top-rated dairy product on Blinkit with a 4.66/5 customer rating.",
+    "reviews": [
+      "Consistent taste and always fresh on delivery.",
+      "Great value for money at this price point."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P071",
+    "name": "Britannia Milk Bread",
+    "category": "Dairy",
+    "brand": "Britannia",
+    "price": 60,
+    "mrp": 60,
+    "rating": 4.5,
+    "unit": "400 g",
+    "stock": 14,
+    "description": "Britannia Milk Bread from Britannia (400 g) — a top-rated dairy product on Blinkit with a 4.5/5 customer rating.",
+    "reviews": [
+      "Delivered quickly and in perfect condition.",
+      "Perfect for daily use, great product."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P072",
+    "name": "Hatsun Pouch Curd",
+    "category": "Dairy",
+    "brand": "Hatsun",
+    "price": 37,
+    "mrp": 37,
+    "rating": 4.74,
+    "unit": "500 g",
+    "stock": 2,
+    "description": "Hatsun Pouch Curd from Hatsun (500 g) — a top-rated dairy product on Blinkit with a 4.74/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P073",
+    "name": "English Oven Milk Bread",
+    "category": "Dairy",
+    "brand": "English Oven",
+    "price": 60,
+    "mrp": 60,
+    "rating": 4.53,
+    "unit": "400 g",
+    "stock": 6,
+    "description": "English Oven Milk Bread from English Oven (400 g) — a top-rated dairy product on Blinkit with a 4.53/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P074",
+    "name": "Milky Mist Paneer",
+    "category": "Dairy",
+    "brand": "Milky Mist",
+    "price": 105,
+    "mrp": 135,
+    "rating": 4.63,
+    "unit": "200 g",
+    "stock": 30,
+    "description": "Milky Mist Paneer from Milky Mist (200 g) — a top-rated dairy product on Blinkit with a 4.63/5 customer rating.",
+    "reviews": [
+      "Fresh and well-packaged, happy with the purchase.",
+      "A staple in our kitchen, never disappoints."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P075",
+    "name": "Nandini Goodlife Toned Milk",
+    "category": "Dairy",
+    "brand": "Nandini Goodlife",
+    "price": 36,
+    "mrp": 36,
+    "rating": 4.74,
+    "unit": "500 ml",
+    "stock": 30,
+    "description": "Nandini Goodlife Toned Milk from Nandini Goodlife (500 ml) — a top-rated dairy product on Blinkit with a 4.74/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P076",
+    "name": "Amul Kool Badam Flavoured Milk",
+    "category": "Dairy",
+    "brand": "Amul Kool",
+    "price": 25,
+    "mrp": 25,
+    "rating": 4.57,
+    "unit": "180 ml",
+    "stock": 12,
+    "description": "Amul Kool Badam Flavoured Milk from Amul Kool (180 ml) — a top-rated dairy product on Blinkit with a 4.57/5 customer rating.",
+    "reviews": [
+      "Exactly as described, very satisfied.",
+      "Fresh and well-packaged, happy with the purchase."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P077",
+    "name": "Eggoz Nutrition White Protein Rich Eggs (30 pieces)",
+    "category": "Dairy",
+    "brand": "Eggoz",
+    "price": 387,
+    "mrp": 459,
+    "rating": 3.53,
+    "unit": "30 pcs",
+    "stock": 4,
+    "description": "Eggoz Nutrition White Protein Rich Eggs (30 pieces) from Eggoz (30 pcs) — a top-rated dairy product on Blinkit with a 3.53/5 customer rating.",
+    "reviews": [
+      "Delivered quickly and in perfect condition.",
+      "Perfect for daily use, great product."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P078",
+    "name": "Arokya Full Cream Milk",
+    "category": "Dairy",
+    "brand": "Arokya",
+    "price": 36,
+    "mrp": 36,
+    "rating": 4.65,
+    "unit": "500 ml",
+    "stock": 10,
+    "description": "Arokya Full Cream Milk from Arokya (500 ml) — a top-rated dairy product on Blinkit with a 4.65/5 customer rating.",
+    "reviews": [
+      "Delivered quickly and in perfect condition.",
+      "Perfect for daily use, great product."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P079",
+    "name": "Milky Mist Farm Fresh Pouch Curd",
+    "category": "Dairy",
+    "brand": "Milky Mist",
+    "price": 39,
+    "mrp": 42,
+    "rating": 4.74,
+    "unit": "400 g",
+    "stock": 27,
+    "description": "Milky Mist Farm Fresh Pouch Curd from Milky Mist (400 g) — a top-rated dairy product on Blinkit with a 4.74/5 customer rating.",
+    "reviews": [
+      "Trusted brand, always my first choice.",
+      "Compared to alternatives, this is the best."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P080",
+    "name": "Nestle Everyday Dairy Whitener",
+    "category": "Dairy",
+    "brand": "Nestle Everyday",
+    "price": 242,
+    "mrp": 255,
+    "rating": 4.81,
+    "unit": "400 g",
+    "stock": 4,
+    "description": "Nestle Everyday Dairy Whitener from Nestle Everyday (400 g) — a top-rated dairy product on Blinkit with a 4.81/5 customer rating.",
+    "reviews": [
+      "Fresh and well-packaged, happy with the purchase.",
+      "A staple in our kitchen, never disappoints."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P081",
+    "name": "Hen Fruit -10 Max Protein Speciality Eggs",
+    "category": "Dairy",
+    "brand": "Hen Fruit",
+    "price": 137,
+    "mrp": 160,
+    "rating": 3.96,
+    "unit": "10 pcs",
+    "stock": 1,
+    "description": "Hen Fruit -10 Max Protein Speciality Eggs from Hen Fruit (10 pcs) — a top-rated dairy product on Blinkit with a 3.96/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P082",
+    "name": "Amul Mithai Mate Condensed Milk",
+    "category": "Dairy",
+    "brand": "Amul Mithai Mate",
+    "price": 68,
+    "mrp": 68,
+    "rating": 4.71,
+    "unit": "200 g",
+    "stock": 8,
+    "description": "Amul Mithai Mate Condensed Milk from Amul Mithai Mate (200 g) — a top-rated dairy product on Blinkit with a 4.71/5 customer rating.",
+    "reviews": [
+      "Exactly as described, very satisfied.",
+      "Fresh and well-packaged, happy with the purchase."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P083",
+    "name": "Heritage Special Long Life Milk (90 Days Shelf Life)",
+    "category": "Dairy",
+    "brand": "Heritage",
+    "price": 32,
+    "mrp": 33,
+    "rating": 4.62,
+    "unit": "450 ml",
+    "stock": 30,
+    "description": "Heritage Special Long Life Milk (90 Days Shelf Life) from Heritage (450 ml) — a top-rated dairy product on Blinkit with a 4.62/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P084",
+    "name": "Licious Farm Fresh Classic White Protein Rich Eggs",
+    "category": "Dairy",
+    "brand": "Licious",
+    "price": 90,
+    "mrp": 99,
+    "rating": 4.02,
+    "unit": "6 pcs",
+    "stock": 13,
+    "description": "Licious Farm Fresh Classic White Protein Rich Eggs from Licious (6 pcs) — a top-rated dairy product on Blinkit with a 4.02/5 customer rating.",
+    "reviews": [
+      "Really good quality, exactly what I expected.",
+      "Consistent taste and always fresh on delivery."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P085",
+    "name": "Amul Kool Cafe Milk 'n' Coffee Flavoured Milk",
+    "category": "Dairy",
+    "brand": "Amul Kool Cafe",
+    "price": 30,
+    "mrp": 30,
+    "rating": 4.61,
+    "unit": "200 ml",
+    "stock": 11,
+    "description": "Amul Kool Cafe Milk 'n' Coffee Flavoured Milk from Amul Kool Cafe (200 ml) — a top-rated dairy product on Blinkit with a 4.61/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P086",
+    "name": "Nestle Milkmaid Mini Sweetened Liquid Condensed Milk",
+    "category": "Dairy",
+    "brand": "Nestle Milkmaid",
+    "price": 84,
+    "mrp": 84,
+    "rating": 4.73,
+    "unit": "190 g",
+    "stock": 19,
+    "description": "Nestle Milkmaid Mini Sweetened Liquid Condensed Milk from Nestle Milkmaid (190 g) — a top-rated dairy product on Blinkit with a 4.73/5 customer rating.",
+    "reviews": [
+      "Great value for money at this price point.",
+      "My family uses this brand regularly, always reliable."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P087",
+    "name": "Milky Mist Farm Fresh Cup Curd",
+    "category": "Dairy",
+    "brand": "Milky Mist",
+    "price": 126,
+    "mrp": 138,
+    "rating": 4.61,
+    "unit": "1 kg",
+    "stock": 4,
+    "description": "Milky Mist Farm Fresh Cup Curd from Milky Mist (1 kg) — a top-rated dairy product on Blinkit with a 4.61/5 customer rating.",
+    "reviews": [
+      "Delivered quickly and in perfect condition.",
+      "Perfect for daily use, great product."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P088",
+    "name": "Amul Kool Cafe Milk 'n' Coffee Flavoured Milk (Can)",
+    "category": "Dairy",
+    "brand": "Amul Kool Cafe",
+    "price": 35,
+    "mrp": 35,
+    "rating": 4.55,
+    "unit": "200 ml",
+    "stock": 10,
+    "description": "Amul Kool Cafe Milk 'n' Coffee Flavoured Milk (Can) from Amul Kool Cafe (200 ml) — a top-rated dairy product on Blinkit with a 4.55/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P089",
+    "name": "Amul Probiotic High Protein Curd",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 80,
+    "mrp": 80,
+    "rating": 4.17,
+    "unit": "400 g",
+    "stock": 30,
+    "description": "Amul Probiotic High Protein Curd from Amul (400 g) — a top-rated dairy product on Blinkit with a 4.17/5 customer rating.",
+    "reviews": [
+      "Great value for money at this price point.",
+      "My family uses this brand regularly, always reliable."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P090",
+    "name": "Nandini Paneer",
+    "category": "Dairy",
+    "brand": "Nandini",
+    "price": 96,
+    "mrp": 96,
+    "rating": 4.61,
+    "unit": "200 g",
+    "stock": 10,
+    "description": "Nandini Paneer from Nandini (200 g) — a top-rated dairy product on Blinkit with a 4.61/5 customer rating.",
+    "reviews": [
+      "Great value for money at this price point.",
+      "My family uses this brand regularly, always reliable."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P091",
+    "name": "Hommade Coconut Milk",
+    "category": "Dairy",
+    "brand": "Hommade",
+    "price": 81,
+    "mrp": 89,
+    "rating": 4.67,
+    "unit": "200 ml",
+    "stock": 17,
+    "description": "Hommade Coconut Milk from Hommade (200 ml) — a top-rated dairy product on Blinkit with a 4.67/5 customer rating.",
+    "reviews": [
+      "Exactly as described, very satisfied.",
+      "Fresh and well-packaged, happy with the purchase."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P092",
+    "name": "Farm Made Free Range Eggs",
+    "category": "Dairy",
+    "brand": "Farm Made",
+    "price": 154,
+    "mrp": 159,
+    "rating": 4.05,
+    "unit": "6 pcs",
+    "stock": 15,
+    "description": "Farm Made Free Range Eggs from Farm Made (6 pcs) — a top-rated dairy product on Blinkit with a 4.05/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P093",
+    "name": "Amulya Dairy Whitener",
+    "category": "Dairy",
+    "brand": "Amulya",
+    "price": 255,
+    "mrp": 255,
+    "rating": 4.78,
+    "unit": "500 g",
+    "stock": 3,
+    "description": "Amulya Dairy Whitener from Amulya (500 g) — a top-rated dairy product on Blinkit with a 4.78/5 customer rating.",
+    "reviews": [
+      "Fresh and well-packaged, happy with the purchase.",
+      "A staple in our kitchen, never disappoints."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P094",
+    "name": "Amul Slim 'n' Trim Skimmed Milk (Zero Cholesterol)",
+    "category": "Dairy",
+    "brand": "Amul",
+    "price": 85,
+    "mrp": 85,
+    "rating": 4.65,
+    "unit": "1 ltr",
+    "stock": 30,
+    "description": "Amul Slim 'n' Trim Skimmed Milk (Zero Cholesterol) from Amul (1 ltr) — a top-rated dairy product on Blinkit with a 4.65/5 customer rating.",
+    "reviews": [
+      "Trusted brand, always my first choice.",
+      "Compared to alternatives, this is the best."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P095",
+    "name": "Heritage Fresh Paneer",
+    "category": "Dairy",
+    "brand": "Heritage",
+    "price": 101,
+    "mrp": 120,
+    "rating": 4.62,
+    "unit": "200 g",
+    "stock": 5,
+    "description": "Heritage Fresh Paneer from Heritage (200 g) — a top-rated dairy product on Blinkit with a 4.62/5 customer rating.",
+    "reviews": [
+      "Trusted brand, always my first choice.",
+      "Compared to alternatives, this is the best."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P096",
+    "name": "Heritage Soothing & Refreshing Cup Curd",
+    "category": "Dairy",
+    "brand": "Heritage",
+    "price": 115,
+    "mrp": 120,
+    "rating": 4.6,
+    "unit": "1 kg",
+    "stock": 3,
+    "description": "Heritage Soothing & Refreshing Cup Curd from Heritage (1 kg) — a top-rated dairy product on Blinkit with a 4.6/5 customer rating.",
+    "reviews": [
+      "Consistent taste and always fresh on delivery.",
+      "Great value for money at this price point."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P097",
+    "name": "Arokya Toned Milk",
+    "category": "Dairy",
+    "brand": "Arokya",
+    "price": 26,
+    "mrp": 26,
+    "rating": 4.56,
+    "unit": "500 ml",
+    "stock": 7,
+    "description": "Arokya Toned Milk from Arokya (500 ml) — a top-rated dairy product on Blinkit with a 4.56/5 customer rating.",
+    "reviews": [
+      "Good portion size and arrives fresh.",
+      "Trusted brand, always my first choice."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P098",
+    "name": "Smoodh Chocolate Dairy Based Flavoured Milk (Pet Bottle)",
+    "category": "Dairy",
+    "brand": "Smoodh",
+    "price": 19,
+    "mrp": 20,
+    "rating": 4.58,
+    "unit": "150 ml",
+    "stock": 19,
+    "description": "Smoodh Chocolate Dairy Based Flavoured Milk (Pet Bottle) from Smoodh (150 ml) — a top-rated dairy product on Blinkit with a 4.58/5 customer rating.",
+    "reviews": [
+      "Top-notch quality, will order again.",
+      "Exactly as described, very satisfied."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P099",
+    "name": "Amulspray Baby Milk Powder",
+    "category": "Dairy",
+    "brand": "Amulspray",
+    "price": 263,
+    "mrp": 263,
+    "rating": 4.68,
+    "unit": "500 g",
+    "stock": 3,
+    "description": "Amulspray Baby Milk Powder from Amulspray (500 g) — a top-rated dairy product on Blinkit with a 4.68/5 customer rating.",
+    "reviews": [
+      "Top-notch quality, will order again.",
+      "Exactly as described, very satisfied."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
+  },
+  {
+    "id": "P100",
+    "name": "Amul Kool Badam Milkshake",
+    "category": "Dairy",
+    "brand": "Amul Kool",
+    "price": 40,
+    "mrp": 40,
+    "rating": 4.58,
+    "unit": "200 ml",
+    "stock": 7,
+    "description": "Amul Kool Badam Milkshake from Amul Kool (200 ml) — a top-rated dairy product on Blinkit with a 4.58/5 customer rating.",
+    "reviews": [
+      "Compared to alternatives, this is the best.",
+      "Smooth texture and premium feel."
+    ],
+    "image_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    "faqs": [
+      {
+        "q": "How should I store this?",
+        "a": "Keep refrigerated at 2-8 C and consume before the best-before date on the pack."
+      },
+      {
+        "q": "Is this product pasteurised?",
+        "a": "Yes, all dairy products are pasteurised and safe for direct consumption."
+      }
+    ],
+    "related_products": [
+      "P001",
+      "P002",
+      "P003"
+    ]
   }
 ]

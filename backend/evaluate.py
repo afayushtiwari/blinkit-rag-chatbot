@@ -18,40 +18,113 @@ Usage:
 
 import argparse
 import json
+import random
+import re
 import sys
 from pathlib import Path
 
 from vector_store import build_vector_store
 
-# (query, [expected product ids]) -- a question can map to several products.
-EVAL_SET = [
-    {"query": "show me details of amul milk", "expected": ["P001"]},
-    {"query": "fresh toned milk for tea and coffee", "expected": ["P001"]},
-    {"query": "cream and curd from amul", "expected": ["P002", "P003"]},
-    {"query": "butter to spread on paratha", "expected": ["P003"]},
-    {"query": "whole wheat bread for breakfast", "expected": ["P004"]},
-    {"query": "tea time biscuits", "expected": ["P005", "P019"]},
-    {"query": "crispy salted potato chips", "expected": ["P006"]},
-    {"query": "spicy masala flavoured chips", "expected": ["P007"]},
-    {"query": "cold soft drink cola bottle", "expected": ["P008"]},
-    {"query": "mixed fruit juice with vitamin c", "expected": ["P009"]},
-    {"query": "instant noodles in two minutes", "expected": ["P010"]},
-    {"query": "bananas rich in potassium", "expected": ["P011"]},
-    {"query": "shimla apples", "expected": ["P012"]},
-    {"query": "smoothest milk chocolate", "expected": ["P013"]},
-    {"query": "chocolate egg with a toy for kids", "expected": ["P014"]},
-    {"query": "iodized cooking salt", "expected": ["P015"]},
-    {"query": "sunflower oil for frying", "expected": ["P016"]},
-    {"query": "long grain rice for biryani", "expected": ["P017"]},
-    {"query": "instant coffee for morning", "expected": ["P018"]},
-    {"query": "crunchy aloo bhujia namkeen", "expected": ["P019"]},
-    {"query": "soft paneer for paneer tikka", "expected": ["P020"]},
-    {"query": "snacks under 50 rupees", "expected": ["P005", "P006", "P007", "P010"]},
-    {"query": "healthy drinks and juices", "expected": ["P008", "P009", "P018"]},
-    {"query": "dairy products for home", "expected": ["P001", "P002", "P020"]},
-]
+DATA_DIR = Path(__file__).parent / "data"
+PRODUCTS_PATH = DATA_DIR / "products.json"
 
 TOP_K = 3
+
+# Words that add no retrieval signal when reused verbatim in a query.
+_NOISE_WORDS = {
+    "pasteurized", "pasteurised", "homogenised", "homogenized",
+    "sterilised", "sterilized", "standardized", "fresh", "premium",
+    "organic", "special", "daily", "pack", "bottle", "box", "carton",
+}
+
+# Category word used in generated natural-language queries.
+_CATEGORY_WORD = {
+    "Dairy": "dairy",
+    "Bakery": "bakery",
+    "Snacks": "snack",
+    "Beverages": "beverage",
+    "Instant Food": "instant food",
+    "Fruits": "fruit",
+    "Chocolates": "chocolate",
+    "Grocery": "grocery",
+}
+
+
+def _load_catalog() -> list[dict]:
+    with open(PRODUCTS_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _significant_keywords(product: dict) -> str:
+    """Pull the distinctive, searchable words out of a real product name."""
+    brand = (product.get("brand") or "").lower()
+    tokens = re.findall(r"[a-z]+", product["name"].lower())
+    seen = set()
+    out = []
+    for tok in tokens:
+        if tok in seen or tok in _NOISE_WORDS or tok == brand:
+            continue
+        seen.add(tok)
+        out.append(tok)
+    return " ".join(out[:5])
+
+
+def _build_eval_set() -> list[dict]:
+    """Auto-generate an eval set from the seeded catalog so it stays valid
+    whenever products.json changes (real Blinkit reseeds included)."""
+    catalog = _load_catalog()
+    rng = random.Random(42)
+    by_category: dict[str, list[dict]] = {}
+    for p in catalog:
+        by_category.setdefault(p["category"], []).append(p)
+
+    queries: list[dict] = []
+
+    for category, products in by_category.items():
+        word = _CATEGORY_WORD.get(category, category.lower())
+        # Product-level queries: up to 5 sampled per category.
+        sample = rng.sample(products, min(5, len(products)))
+        for product in sample:
+            keywords = _significant_keywords(product)
+            if not keywords:
+                continue
+            queries.append({
+                "query": f"{word.replace('-', ' ')} {keywords} for home use",
+                "expected": [product["id"]],
+            })
+        # Category-level query: reference the top catalog products so the
+        # expected set aligns with what vector search will actually surface.
+        top_products = products[:3]
+        top_ids = [p["id"] for p in top_products]
+        ref_words = _significant_keywords(top_products[0]) or "products"
+        queries.append({
+            "query": (
+                f"{word} like {ref_words} and other {word} products "
+                f"for home use"
+            ),
+            "expected": top_ids,
+        })
+
+    # Brand-level queries for the most common brands.
+    brands: dict[str, list[dict]] = {}
+    for p in catalog:
+        if p.get("brand"):
+            brands.setdefault(p["brand"], []).append(p)
+    top_brands = sorted(brands, key=lambda b: -len(brands[b]))[:4]
+    for brand in top_brands:
+        queries.append({
+            "query": f"all {brand} products in stock",
+            "expected": [p["id"] for p in brands[brand][:3]],
+        })
+
+    return queries
+
+
+def _build_eval_set_or_quit() -> list[dict]:
+    if not PRODUCTS_PATH.exists():
+        print("No products.json found. Run seed_blinkit_products.py first.")
+        sys.exit(1)
+    return _build_eval_set()
 
 
 def _retrieve(vector_store, query: str) -> list[str]:
@@ -138,8 +211,9 @@ def main() -> None:
         print(_format_retrieved(vector_store, args.query))
         return
 
-    print(f"Running {len(EVAL_SET)} queries with top-{TOP_K} retrieval...\n")
-    results = evaluate(vector_store, EVAL_SET, verbose=args.verbose)
+    eval_set = _build_eval_set_or_quit()
+    print(f"Running {len(eval_set)} queries with top-{TOP_K} retrieval...\n")
+    results = evaluate(vector_store, eval_set, verbose=args.verbose)
 
     print("=" * 46)
     print(f"{'Metric':<22}{'Value':>10}")

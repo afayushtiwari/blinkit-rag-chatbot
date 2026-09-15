@@ -47,9 +47,28 @@ export default function ProductCard({ product, onAddToCart, compact = false }) {
         )}
 
         <div className="mt-auto pt-2 flex items-center justify-between">
-          <span className="font-bold text-gray-900 dark:text-white">
-            ₹{product.price}
-          </span>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1">
+              <span className="font-bold text-gray-900 dark:text-white">
+                ₹{product.price}
+              </span>
+              {product.mrp && product.mrp > product.price && (
+                <>
+                  <span className="text-[10px] text-gray-400 line-through">
+                    ₹{product.mrp}
+                  </span>
+                  <span className="text-[10px] font-bold text-green-600">
+                    {Math.round((1 - product.price / product.mrp) * 100)}% OFF
+                  </span>
+                </>
+              )}
+            </div>
+            {product.unit && (
+              <span className="text-[10px] text-gray-400 dark:text-gray-500">
+                {product.unit}
+              </span>
+            )}
+          </div>
           <button
             onClick={() => onAddToCart && onAddToCart(product)}
             disabled={outOfStock}
