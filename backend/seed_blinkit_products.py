@@ -31,6 +31,7 @@ import math
 import random
 import re
 import sys
+import time
 import urllib.request
 import urllib.error
 from pathlib import Path
@@ -377,7 +378,7 @@ def _build_catalog(records: list[dict], limit: int = 100) -> list[dict]:
     print(f"  Selected: {len(selected)} products "
           f"(across {len({r['category'] for r in selected})} categories)")
 
-    # Assign sequential IDs
+# Assign sequential IDs
     catalog = []
     for idx, rec in enumerate(selected, start=1):
         pid = f"P{idx:03d}"
@@ -392,6 +393,7 @@ def _build_catalog(records: list[dict], limit: int = 100) -> list[dict]:
             "rating": rec["rating"],
             "unit": rec["unit"],
             "stock": rec["stock"],
+            "product_id": rec["raw_id"],   # Blinkit's real product id
             "description": _description(rec["name"], rec["brand"], rec["unit"], cat, rec["rating"]),
             "reviews": _pick_reviews(rec["name"], 2),
             "image_url": rec["image_url"] or UNSPASH_IMAGES.get(cat, UNSPASH_IMAGES["Dairy"]),
@@ -399,7 +401,7 @@ def _build_catalog(records: list[dict], limit: int = 100) -> list[dict]:
             "related_products": [],   # filled below
         })
 
-    # Fill related_products (up to 3 same-category products)
+# Fill related_products (up to 3 same-category products)
     by_cat: dict[str, list] = {}
     for p in catalog:
         by_cat.setdefault(p["category"], []).append(p["id"])
@@ -408,6 +410,93 @@ def _build_catalog(records: list[dict], limit: int = 100) -> list[dict]:
         p["related_products"] = siblings[:3]
 
     return catalog
+
+
+# ---------------------------------------------------------------------------
+# Real product image resolution (Blinkit PDP endpoint)
+# ---------------------------------------------------------------------------
+_PDP_HEADERS = {
+    "accept": "*/*",
+    "app_client": "consumer_web",
+    "app_version": "1010101010",
+    "auth_key": "c761ec3633c22afad934fb17a66385c1c06c5472b4898b866b7306186d0bb477",
+    "content-type": "application/json",
+    "accept-encoding": "identity",
+    "lat": "28.6139",
+    "lon": "77.2090",
+    "origin": "https://blinkit.com",
+    "referer": "https://blinkit.com/",
+    "user-agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+    ),
+    "web_app_version": "1008010016",
+}
+
+
+def _fetch_primary_blinkit_image(prid: str) -> str:
+    """Fetch a product's real image via the Blinkit PDP API.
+
+    Returns the first entry of the product's own SEO image array
+    (response.tracking.le_meta.custom_data.seo.images) -> a public
+    cdn.grofers.com/da/cms-assets/... URL, or "" when unavailable.
+    """
+    req = urllib.request.Request(
+        f"https://blinkit.com/v1/layout/product/{prid}",
+        data=b"",
+        headers=_PDP_HEADERS,
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        body = resp.read()
+    data = json.loads(body)
+
+    node = data
+    for key in ("response", "tracking", "le_meta", "custom_data", "seo", "images"):
+        if not isinstance(node, dict) or key not in node:
+            return ""
+        node = node[key]
+
+    if isinstance(node, list) and node:
+        url = str(node[0])
+        if url.startswith("http"):
+            return url
+    return ""
+
+
+def _resolve_blinkit_images(catalog: list[dict]) -> None:
+    """Populate each catalog entry with its real Blinkit product image,
+    resolved from the live PDP endpoint. Keeps the existing fallback image
+    whenever the PDP call fails (network block, banned IP, product removed).
+
+    Requests are throttled: the PDP endpoint rate-limits parallel scrapers,
+    so each product gets its own request with a short delay between calls.
+    """
+    remaining = [p for p in catalog if p.get("product_id")]
+    print(f"\n  Resolving real Blinkit images for {len(remaining)} products...")
+
+    resolved = 0
+    for i, product in enumerate(remaining, start=1):
+        prid = str(product.get("product_id", "")).strip()
+        if not prid.isdigit():
+            continue
+        url = ""
+        for attempt in (1, 2, 3):
+            try:
+                url = _fetch_primary_blinkit_image(prid)
+                if url:
+                    break
+            except Exception:
+                url = ""
+            time.sleep(0.5)
+        if url:
+            product["image_url"] = url
+            resolved += 1
+        if i % 10 == 0:
+            print(f"    {i}/{len(remaining)}...", flush=True)
+        time.sleep(0.7)
+
+    print(f"  Resolved {resolved}/{len(catalog)} products to real Blinkit images.")
 
 
 # ---------------------------------------------------------------------------
@@ -457,9 +546,11 @@ def main() -> None:
     source.add_argument("--live", action="store_true", help="Fetch live from Blinkit GraphQL API")
     source.add_argument("--snapshot", type=str, nargs="?",
                         const=str(CAPTURE_PATH),
-                        help="Use offline snapshot (default: data/blinkit_capture.json)")
+help="Use offline snapshot (default: data/blinkit_capture.json)")
     parser.add_argument("--limit", type=int, default=100, help="Max products in catalog (default 100)")
     parser.add_argument("--rebuild", action="store_true", help="Force ChromaDB rebuild")
+    parser.add_argument("--no-images", action="store_true",
+                        help="Skip real Blinkit image resolution (offline mode)")
     args = parser.parse_args()
 
     print("=" * 50)
@@ -505,6 +596,12 @@ def main() -> None:
         print(f"    {cat:<20} {count}")
     avg_price = sum(p["price"] for p in catalog) / len(catalog)
     print(f"    Average price: Rs. {avg_price:.0f}")
+
+    # Resolve real Blinkit product images (unless explicitly disabled).
+    # Snapshot captures don't carry image URLs; the PDP endpoint supplies
+    # real cdn.grofers.com product photos for every product id.
+    if not args.no_images:
+        _resolve_blinkit_images(catalog)
 
     print("\n[WRITING]")
     _write_products(catalog)

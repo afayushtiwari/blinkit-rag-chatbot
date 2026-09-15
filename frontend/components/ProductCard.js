@@ -5,6 +5,26 @@ export default function ProductCard({ product, onAddToCart, compact = false }) {
   const outOfStock = stock !== null && stock <= 0;
   const lowStock = stock !== null && stock > 0 && stock <= 3;
 
+  const FALLBACK_IMAGES = {
+    Dairy: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400",
+    Bakery: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400",
+    Snacks: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400",
+    Beverages: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400",
+    "Instant Food": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400",
+    Fruits: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+    Chocolates: "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400",
+    Grocery: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+  };
+
+  const fallbackSrc =
+    FALLBACK_IMAGES[product.category] || FALLBACK_IMAGES.Grocery;
+
+  const handleImageError = (e) => {
+    if (e.currentTarget.src !== fallbackSrc) {
+      e.currentTarget.src = fallbackSrc;
+    }
+  };
+
   return (
     <div
       className={`bg-white dark:bg-gray-800 rounded-xl2 shadow-soft hover:shadow-lg transition-shadow overflow-hidden flex flex-col ${
@@ -16,6 +36,7 @@ export default function ProductCard({ product, onAddToCart, compact = false }) {
         <img
           src={product.image_url}
           alt={product.name}
+          onError={handleImageError}
           className="w-full h-32 object-cover"
         />
         {product.rating && (
