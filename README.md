@@ -278,7 +278,7 @@ Status legend: ✅ **Done** · 🚧 **Partial** · ⬜ **Planned**
 | # | Feature | Status | Notes |
 |---|---|---|---|
 | 1 | Multi-item cart in one message | 🚧 Partial | `cart_agent.py` handles explicit single-product cart commands deterministically ("Add 2 Amul Milk to my cart"); multi-item commands go through the agent loop |
-| 2 | Streaming responses (SSE) | ⬜ Planned | Bot answer streams word-by-word instead of a spinner |
+| 2 | Streaming responses (SSE) | ✅ Done | `POST /api/chat/stream` (SSE) streams the bot answer word-by-word into the chat bubble; `done` event carries product cards + cart |
 | 3 | Chat feedback 👍/👎 + ⭐ | ✅ Done | `feedback.py` (SQLite), `POST /api/feedback`, `GET /api/feedback/stats`; thumbs + 5-star row under every bot answer |
 | 4 | Delivery slot booking | ✅ Done | `GET/POST /api/delivery-slots`, slot picker in checkout, slot is booked in the same transaction as the order |
 | 5 | Order tracking | ✅ Done | `get_order_status` tool + live timeline (Placed → Packed → On the way → Delivered) that resolves from elapsed time; shown in the checkout confirmation and chat |

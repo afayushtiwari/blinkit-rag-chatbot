@@ -32,6 +32,8 @@ Run locally with:
     uvicorn main:app --reload --port 8000
 """
 
+import asyncio
+import json as json_module
 import logging
 import os
 import re
@@ -45,7 +47,7 @@ from pydantic import BaseModel, Field
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 
 from settings import settings
 from cart_agent import handle_cart_command
@@ -418,6 +420,89 @@ def reset_chat(request: Request, session_id: str):
     memory_module.clear_session(session_id)
     logger.info("Session cleared: %s", session_id)
     return {"status": "cleared", "session_id": session_id}
+
+
+# ---------------------------------------------------------------------------
+# Streaming responses (SSE) - Feature: bot answer streams word-by-word
+# ---------------------------------------------------------------------------
+def _sse_event(event: str, data: dict) -> str:
+    """Encode one Server-Sent Events frame as a single-line JSON payload."""
+    payload = json_module.dumps({"event": event, **data}, ensure_ascii=False)
+    return f"data: {payload}\n\n"
+
+
+def _token_chunks(text: str):
+    """Split a final answer into word-sized chunks so the frontend can render
+    it word-by-word (walks into newline-padded tokens but splits on spaces)."""
+    words = text.split(" ")
+    for index, word in enumerate(words):
+        if not word:
+            continue
+        separator = " " if index < len(words) - 1 else ""
+        yield word + separator
+
+
+async def _chat_stream_generator(session_id: str, message: str):
+    """Async generator powering POST /api/chat/stream.
+
+    Event flow: `start` -> `token` (one per word) -> `done` (final
+    metadata: message_id, products, cart) or `error`. The agent loop still
+    runs normally (tool calls are not streamed); the *final answer* is what
+    streams, which replaces the spinner with a word-by-word effect.
+    """
+    yield _sse_event("start", {})
+
+    answer = ""
+    products: list = []
+    message_id = ""
+
+    try:
+        cart_result = handle_cart_command(session_id, message)
+        if cart_result is not None:
+            answer = cart_result["answer"]
+            products = cart_result.get("products", [])
+            message_id = str(uuid.uuid4())
+            memory_module.save_turn(session_id, message, answer)
+        else:
+            pipeline = get_rag_pipeline()
+            result = pipeline.generate_response(session_id, message)
+            answer = result["answer"]
+            products = result.get("products", [])
+            message_id = result["message_id"]
+    except Exception as exc:
+        logger.error("Chat stream error: %s\n%s", exc, traceback.format_exc())
+        yield _sse_event("error", {
+            "detail": f"Chatbot failed to generate a response: {str(exc)}",
+        })
+        return
+
+    for chunk in _token_chunks(answer):
+        yield _sse_event("token", {"text": chunk})
+        await asyncio.sleep(0.02)
+
+    yield _sse_event("done", {
+        "message_id": message_id,
+        "answer": answer,
+        "products": products,
+        "cart": cart_module.get_cart(session_id),
+    })
+
+
+@app.post("/api/chat/stream")
+@limiter.limit("20/minute")
+def chat_stream(request: Request, body: ChatRequest):
+    """SSE variant of /api/chat: streams the bot answer word-by-word, then
+    sends a final `done` event carrying the product cards + current cart."""
+    logger.info("Chat stream session=%s length=%d", body.session_id, len(body.message))
+    return StreamingResponse(
+        _chat_stream_generator(body.session_id, body.message),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+            "Connection": "keep-alive",
+        },
+    )
 
 
 if __name__ == "__main__":

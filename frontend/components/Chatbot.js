@@ -20,6 +20,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
   const [feedback, setFeedback] = useState({});
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [streaming, setStreaming] = useState(false);
   const [historyLoaded, setHistoryLoaded] = useState(false);
   const [listening, setListening] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
@@ -30,6 +31,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
   const [historyError, setHistoryError] = useState(null);
   const scrollRef = useRef(null);
   const recognitionRef = useRef(null);
+  const streamErrorRef = useRef(null);
 
   const formatTime = (iso) => {
     if (!iso) return "";
@@ -165,9 +167,61 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setLoading(true);
+    setStreaming(true);
+
+    // Placeholder bubble that receives token events word-by-word.
+    const clientId = uuidv4();
+    setMessages((prev) => [
+      ...prev,
+      { clientId, streamed: true, role: "bot", text: "", products: [], messageId: null },
+    ]);
+
+    const appendToken = (token) => {
+      setMessages((prev) =>
+        prev.map((m) => (m.clientId === clientId ? { ...m, text: m.text + token } : m))
+      );
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
+    };
+
+    const handleEvent = (payload) => {
+      if (payload.event === "token") {
+        appendToken(payload.text || "");
+      } else if (payload.event === "done") {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.clientId === clientId
+              ? {
+                  ...m,
+                  text: payload.answer,
+                  messageId: payload.message_id,
+                  products: payload.products || [],
+                }
+              : m
+          )
+        );
+        if (payload.cart) onCartChanged?.(payload.cart);
+      } else if (payload.event === "error") {
+        streamErrorRef.current = new Error(payload.detail || "Streaming error");
+      }
+    };
+
+    const processBlock = (block) => {
+      block
+        .split("\n")
+        .filter((line) => line.startsWith("data: "))
+        .forEach((line) => {
+          try {
+            handleEvent(JSON.parse(line.slice(6)));
+          } catch (e) {
+            // ignore malformed frames; surface only structured error events
+          }
+        });
+    };
 
     try {
-      const res = await fetch(`${API_URL}/api/chat`, {
+      const res = await fetch(`${API_URL}/api/chat/stream`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: currentSessionId, message: trimmed }),
@@ -178,18 +232,43 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
         throw new Error(errData.detail || `Server responded with ${res.status}`);
       }
 
-      const data = await res.json();
-      if (data.cart) onCartChanged?.(data.cart);
-      setMessages((prev) => [
-        ...prev,
-        {
-          messageId: data.message_id,
-          role: "bot",
-          text: data.answer,
+      if (!res.body || !window.TextDecoder) {
+        // Old /api/chat fallback when the browser can't read the stream.
+        const fallback = await fetch(`${API_URL}/api/chat`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ session_id: currentSessionId, message: trimmed }),
+        });
+        if (!fallback.ok) throw new Error(`Server responded with ${fallback.status}`);
+        const data = await fallback.json();
+        handleEvent({
+          event: "done",
+          answer: data.answer,
+          message_id: data.message_id,
           products: data.products || [],
-        },
-      ]);
+          cart: data.cart || null,
+        });
+      } else {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          let sep;
+          while ((sep = buffer.indexOf("\n\n")) !== -1) {
+            processBlock(buffer.slice(0, sep));
+            buffer = buffer.slice(sep + 2);
+          }
+        }
+        if (buffer.trim()) processBlock(buffer);
+        decoder.decode();
+      }
+
+      if (streamErrorRef.current) throw streamErrorRef.current;
     } catch (err) {
+      setMessages((prev) => prev.filter((m) => m.clientId !== clientId));
       setMessages((prev) => [
         ...prev,
         {
@@ -202,6 +281,8 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
         },
       ]);
     } finally {
+      streamErrorRef.current = null;
+      setStreaming(false);
       setLoading(false);
     }
   };
@@ -309,7 +390,18 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
                         : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-bl-sm shadow-soft"
                     }`}
                   >
-                    {msg.text}
+                    {msg.streamed && streaming && !msg.text ? (
+                      <span className="inline-flex gap-1">
+                        <span className="typing-dot w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full inline-block" />
+                        <span className="typing-dot w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full inline-block" />
+                        <span className="typing-dot w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full inline-block" />
+                      </span>
+                    ) : (
+                      msg.text
+                    )}
+                    {msg.streamed && streaming && msg.text && (
+                      <span className="ml-0.5 inline-block w-1 h-3.5 bg-blinkit-green rounded-sm animate-pulse" />
+                    )}
                   </div>
 
                   {/* Product cards inside chat */}
@@ -364,7 +456,7 @@ export default function Chatbot({ onAddToCart, onCartChanged, sessionId }) {
               );
             })}
 
-            {loading && (
+            {loading && !streaming && (
               <div className="flex items-start">
                 <div className="bg-white dark:bg-gray-800 px-4 py-3 rounded-2xl rounded-bl-sm shadow-soft flex gap-1">
                   <span className="typing-dot w-2 h-2 bg-gray-400 rounded-full inline-block" />
